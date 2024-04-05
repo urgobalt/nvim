@@ -1,7 +1,7 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    { 'williamboman/mason.nvim', config = true },
+    'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     {
       'j-hui/fidget.nvim',
@@ -36,7 +36,7 @@ return {
     },
   },
   config = function()
-    require('mason').setup()
+    require('mason').setup({ PATH = "append", })
     require('mason-lspconfig').setup()
     require('neodev').setup()
 
