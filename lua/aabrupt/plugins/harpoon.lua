@@ -14,7 +14,7 @@ return {
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, { desc = '[Q]uick Menu' })
     vim.keymap.set('n', '<leader>ha', function()
-      harpoon:list():append()
+      harpoon:list():add()
     end, { desc = '[A]ppend File List' })
 
     vim.keymap.set('n', '<leader>h1', function()

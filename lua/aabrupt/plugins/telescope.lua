@@ -67,8 +67,10 @@ return {
       vim.fn.setreg('v', saved_reg)
       builtin.grep_string { cwd = utils.buffer_dir(), search = selection }
     end, { desc = '[S]earch Selection' })
+
+    local config_dir = vim.env.HOME .. "/.config"
     vim.keymap.set('n', '<leader>bq', function()
-      builtin.find_files { cwd = vim.env.HOME .. '/.dotfiles/symlinks', hidden = true }
+      builtin.find_files { cwd = config_dir, hidden = true }
     end, { desc = 'Find Dotfiles' })
   end,
 }

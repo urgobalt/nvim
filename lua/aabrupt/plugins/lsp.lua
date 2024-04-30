@@ -46,11 +46,6 @@ return {
     end
 
     local servers = {
-      -- clangd = {},
-      -- gopls = {},
-      -- pyright = {},
-      -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
       ['ocamllsp'] = {},
       tsserver = {},
       rust_analyzer = {
