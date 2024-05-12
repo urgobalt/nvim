@@ -36,7 +36,7 @@ return {
     },
   },
   config = function()
-    require('mason').setup({ PATH = "append", })
+    require('mason').setup { PATH = 'append' }
     require('mason-lspconfig').setup()
     require('neodev').setup()
 
@@ -50,8 +50,15 @@ return {
       tsserver = {},
       rust_analyzer = {
         ['rust-analyzer'] = {
-          rustfmt = {
-            extraArgs = { '--config', 'max_width=80' },
+          rustfmt = {},
+          procMacro = {
+            ignored = {
+              leptos_macro = {
+                -- optional: --
+                -- "component",
+                'server',
+              },
+            },
           },
         },
       },
