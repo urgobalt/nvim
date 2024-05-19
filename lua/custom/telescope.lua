@@ -29,7 +29,7 @@ set("n", "<leader>th", builtin.help_tags, {desc = "List help tags"})
 
 -- Git specific keymaps
 set("n", "<leader>gf", builtin.git_files, {desc = "Find git files"})
-set("n", "<leader>gs", builtin.git_status, {desc = "List git changes"})
-set("n", "<leader>gc", builtin.git_commits, {desc = "List git changes"})
-set("n", "<leader>gb", function() builtin.git_branches() end, {desc = "List and checkout git branch"})
+set("n", "<leader>gm", builtin.git_status, {desc = "List git modifications"})
+set("n", "<leader>gc", builtin.git_commits, {desc = "List git commits"})
+set("n", "<leader>gb", builtin.git_branches, {desc = "List and checkout git branch"})
 -- stylua: ignore end
