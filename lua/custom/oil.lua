@@ -20,7 +20,7 @@ require("oil").setup({
 		timeout_ms = 1000,
 		autosave_changes = true,
 	},
-	contraint_cursor = editable,
+	contraint_cursor = "editable",
 	expreimental_watch_for_changes = true,
 	use_default_keymaps = true,
 	view_options = {
@@ -38,3 +38,14 @@ require("oil").setup({
 })
 
 vim.keymap.set("n", "-", require("oil").open, { remap = true, desc = "Open file explorer" })
+
+local folder_picker = require("telescope.pickers").new({
+	cwd = "/",
+	clear = true,
+	finder = require("telescope.finders").new_job({ "fd", "--type", "d", "--color", "never" }),
+	com
+}, {})
+
+vim.keymap.set("n", "<leader>bd", function()
+	folder_picker:find()
+end, { desc = "Open directory with Oil" })

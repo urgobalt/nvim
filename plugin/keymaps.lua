@@ -29,4 +29,3 @@ end, { expr = true })
 
 -- Remap macro record
 set("n", "§", "q")
-set("n", "q", "<Nop>")

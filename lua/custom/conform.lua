@@ -10,5 +10,7 @@ require("conform").setup({
 })
 
 vim.keymap.set("n", "<leader>f", function()
-	require("conform").format({})
-end)
+	require("conform").format({
+		lsp_fallback = true,
+	})
+end, { desc = "Format buffer 0" })

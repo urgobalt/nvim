@@ -24,11 +24,6 @@ wo.number = true
 wo.relativenumber = true
 wo.signcolumn = "yes"
 
--- Left column
-wo.number = true
-wo.relativenumber = true
-wo.signcolumn = "yes"
-
 -- Undo and copy/paste
 opt.undofile = true
 opt.clipboard = "unnamedplus"
@@ -49,9 +44,9 @@ g.netrw_winsize = 25
 -- TUI
 opt.termguicolors = true
 opt.colorcolumn = "80,120"
+opt.conceallevel = 2
 
 -- Folding
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
-

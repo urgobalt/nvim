@@ -1,13 +1,13 @@
 local harpoon = require("harpoon")
 
-harpoon:setup()
+harpoon:setup({})
 
 vim.keymap.set("n", "<leader>ha", function()
 	harpoon:list():add()
 end, { desc = "Add file to marks" })
 
-vim.keymap.set("n", "<leader>hq", function()
-	harpoon.ui.toggle_quick_menu(harpoon:list())
+vim.keymap.set("n", "<leader>he", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = "Toggle quick menu" })
 
 -- stylua: ignore start

@@ -20,4 +20,11 @@ return {
 			vim.keymap.set("n", "<leader>o", "<cmd>Trouble<CR>", { desc = "Toggle trouble" })
 		end,
 	},
+	{
+		"laytan/cloak.nvim",
+		config = function()
+			require("cloak").setup({})
+			vim.keymap.set("n", "<leader>ct", "<cmd>CloakToggle<CR>", { desc = "Toggle cloak" })
+		end,
+	},
 }

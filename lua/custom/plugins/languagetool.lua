@@ -4,4 +4,6 @@ return {
 		"BufReadPre",
 		"BufNewFile",
 	},
+	ft = "markdown",
+	enabled = false,
 }
