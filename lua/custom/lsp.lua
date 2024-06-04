@@ -18,6 +18,7 @@ local servers = {
 	tailwindcss = {},
 	zls = {},
 	jsonls = {},
+	gleam = {},
 }
 
 require("neodev").setup({
