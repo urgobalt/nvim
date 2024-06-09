@@ -27,4 +27,18 @@ return {
 			vim.keymap.set("n", "<leader>ct", "<cmd>CloakToggle<CR>", { desc = "Toggle cloak" })
 		end,
 	},
+	{
+		"siawkz/nvim-cheatsh",
+		dependecies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		config = function()
+			require("nvim-cheatsh").setup({
+				cheatsh_url = "https://cht.sh/",
+				position = "top",
+				height = 30,
+			})
+			vim.keymap.set("n", "<leader>to", "<cmd>CheatList<CR>", { desc = "List availiable cheat sheets" })
+		end,
+	},
 }
