@@ -11,7 +11,7 @@ local servers = {
 	clangd = {},
 	gopls = {},
 	htmx = {},
-	rnix = {},
+	["nil"] = {},
 	ocamllsp = {},
 	intelephense = {},
 	taplo = {},
@@ -61,6 +61,20 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
+local configs = require("lspconfig.configs")
+local lsp = require("lspconfig")
+
+-- Custom servers
+configs["nil"] = {
+	default_config = {
+		cmd = { "nil" },
+		filetypes = { "nix" },
+		name = "nil",
+		root_dir = lsp.util.root_pattern("configuration.nix", "flake.nix"),
+		settings = {},
+	},
+}
+
 for key, settings in pairs(servers) do
-	require("lspconfig")[key].setup({ settings = settings, on_attach = on_attach })
+	lsp[key].setup({ settings = settings, on_attach = on_attach })
 end
