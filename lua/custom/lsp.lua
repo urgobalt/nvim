@@ -1,10 +1,14 @@
+local lsp = require("lspconfig")
+
 local servers = {
 	tsserver = {},
 	rust_analyzer = {},
 	lua_ls = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
+		settings = {
+			Lua = {
+				workspace = { checkThirdParty = false },
+				telemetry = { enable = false },
+			},
 		},
 	},
 	astro = {},
@@ -19,6 +23,9 @@ local servers = {
 	zls = {},
 	jsonls = {},
 	gleam = {},
+	elixirls = {
+		cmd = { "elixir-ls" },
+	},
 }
 
 require("neodev").setup({
@@ -62,7 +69,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local configs = require("lspconfig.configs")
-local lsp = require("lspconfig")
 
 -- Custom servers
 configs["nil"] = {
@@ -75,6 +81,9 @@ configs["nil"] = {
 	},
 }
 
-for key, settings in pairs(servers) do
-	lsp[key].setup({ settings = settings, on_attach = on_attach })
+for key, setup in pairs(servers) do
+	if setup.on_attach == nil then
+		setup.on_attach = on_attach
+	end
+	lsp[key].setup(setup)
 end

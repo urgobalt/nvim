@@ -43,7 +43,6 @@ local folder_picker = require("telescope.pickers").new({
 	cwd = "/",
 	clear = true,
 	finder = require("telescope.finders").new_job({ "fd", "--type", "d", "--color", "never" }),
-	com
 }, {})
 
 vim.keymap.set("n", "<leader>bd", function()
