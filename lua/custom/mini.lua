@@ -7,4 +7,4 @@ require("mini.move").setup({
 local bufremove = require("mini.bufremove")
 bufremove.setup({ silent = true })
 
-vim.keymap.set("n", "<leader>bq", bufremove.delete, { desc = "Delete current buffer while preserving layout" })
+vim.keymap.set("n", "<leader>q", bufremove.delete, { desc = "Delete current buffer while preserving layout" })
