@@ -2,6 +2,9 @@ local set = vim.keymap.set
 
 local telescope = require("telescope")
 telescope.setup({
+	defaults = {
+		initial_mode = "normal",
+	},
 	extensions = {
 		repo = {
 			list = {
