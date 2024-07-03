@@ -3,6 +3,7 @@ local set = vim.keymap.set
 -- Buffer actions
 set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save current buffer to file" })
 -- set("n", "<leader>q", "<cmd>q<CR>", { desc = "Exit current buffer" })
+set("n", "<C-w>q", "<cmd>close<CR>", { desc = "Close window without closing neovim" })
 
 -- Splits move
 set("n", "<c-j>", "<c-w><c-j>")
