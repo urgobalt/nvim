@@ -29,10 +29,4 @@ set("n", "<leader>th", builtin.help_tags, {desc = "List help tags"})
 -- Configuration
 set("n", "<leader>tc", function() builtin.find_files({cwd="/etc/nixos"}) end, {desc = "Open file in configuration"})
 
--- Git specific keymaps
-set("n", "<leader>gf", builtin.git_files, {desc = "Find git files"})
-set("n", "<leader>gm", builtin.git_status, {desc = "List git modifications"})
-set("n", "<leader>gc", builtin.git_commits, {desc = "List git commits"})
-set("n", "<leader>gb", builtin.git_branches, {desc = "List and checkout git branch"})
-
 -- stylua: ignore end

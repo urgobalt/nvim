@@ -1,37 +1,3 @@
-local lsp = require("lspconfig")
-
-local servers = {
-	tsserver = {},
-	rust_analyzer = {},
-	lua_ls = {
-		settings = {
-			Lua = {
-				workspace = { checkThirdParty = false },
-				telemetry = { enable = false },
-			},
-		},
-	},
-	astro = {},
-	clangd = {},
-	gopls = {},
-	htmx = {},
-	["nil"] = {},
-	ocamllsp = {},
-	intelephense = {},
-	taplo = {},
-	tailwindcss = {},
-	zls = {},
-	jsonls = {},
-	gleam = {},
-	elixirls = {
-		cmd = { "elixir-ls" },
-	},
-}
-
-require("neodev").setup({
-	pathStrict = true,
-})
-
 local on_attach = function(_, bufnr)
 	local telescope = require("telescope.builtin")
 
@@ -65,21 +31,59 @@ local on_attach = function(_, bufnr)
 	})
 end
 
+local servers = {
+	tsserver = {},
+	rust_analyzer = {},
+	lua_ls = {
+		settings = {
+			Lua = {
+				workspace = { checkThirdParty = false },
+				telemetry = { enable = false },
+				completion = {
+					callSnippet = "Replace",
+				},
+			},
+		},
+	},
+	astro = {},
+	clangd = {},
+	gopls = {},
+	htmx = {},
+	["nil"] = {},
+	ocamllsp = {},
+	intelephense = {},
+	taplo = {},
+	tailwindcss = {},
+	zls = {},
+	jsonls = {},
+	gleam = {},
+	elixirls = {
+		cmd = { "elixir-ls" },
+	},
+}
+
+require("neodev").setup({
+	-- pathStrict = true,
+})
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
+local lsp = require("lspconfig")
 local configs = require("lspconfig.configs")
 
 -- Custom servers
-configs["nil"] = {
-	default_config = {
-		cmd = { "nil" },
-		filetypes = { "nix" },
-		name = "nil",
-		root_dir = lsp.util.root_pattern("configuration.nix", "flake.nix"),
-		settings = {},
-	},
-}
+if not configs["nil"] then
+	configs["nil"] = {
+		default_config = {
+			cmd = { "nil" },
+			filetypes = { "nix" },
+			name = "nil",
+			root_dir = lsp.util.root_pattern("configuration.nix", "flake.nix"),
+			settings = {},
+		},
+	}
+end
 
 for key, setup in pairs(servers) do
 	if setup.on_attach == nil then
