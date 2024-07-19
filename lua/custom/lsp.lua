@@ -63,7 +63,11 @@ local servers = {
 }
 
 require("neodev").setup({
-	-- pathStrict = true,
+	override = function(_, library)
+		library.enabled = true
+		library.plugins = true
+	end,
+	pathStrict = true,
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

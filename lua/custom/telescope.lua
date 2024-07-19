@@ -9,6 +9,8 @@ telescope.setup({
 		repo = {
 			list = {
 				search_dirs = { "~/projects" },
+				tail_path = true,
+				fd_opts = { "--prune" },
 			},
 		},
 		fzy_native = {
@@ -42,6 +44,6 @@ set("n", "<leader>th", builtin.help_tags, {desc = "List help tags"})
 set("n", "<leader>tc", function() builtin.find_files({cwd="/etc/nixos"}) end, {desc = "Open file in configuration"})
 
 -- Repo
-set("n", "<leader>tp", function() telescope.extensions.repo.list({}) end, {desc="List project repositories"})
+set("n", "<leader>tp", function() telescope.extensions.repo.list({}) end, {desc="Open file in project"})
 
 -- stylua: ignore end

@@ -41,10 +41,5 @@ return {
 			vim.keymap.set("n", "<leader>to", "<cmd>CheatList<CR>", { desc = "List availiable cheat sheets" })
 		end,
 	},
-	{
-		"notjedi/nvim-rooter.lua",
-		config = function()
-			require("nvim-rooter").setup({})
-		end,
-	},
+	"airblade/vim-rooter",
 }
