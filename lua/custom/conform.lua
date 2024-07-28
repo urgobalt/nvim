@@ -3,6 +3,7 @@ local formatter_bindings = {
 	javascript = { "prettier", "prettierd" },
 	typescript = { "prettier", "prettierd" },
 	go = { "gofmt" },
+	nix = { "alejandra" },
 }
 
 require("conform").setup({
