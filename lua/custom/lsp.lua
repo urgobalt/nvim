@@ -72,6 +72,10 @@ require("neodev").setup({
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
 
 local lsp = require("lspconfig")
 local configs = require("lspconfig.configs")
@@ -93,5 +97,7 @@ for key, setup in pairs(servers) do
 	if setup.on_attach == nil then
 		setup.on_attach = on_attach
 	end
+	setup.capabilities = capabilities
+
 	lsp[key].setup(setup)
 end

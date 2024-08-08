@@ -48,6 +48,6 @@ opt.colorcolumn = "80,120"
 opt.conceallevel = 2
 
 -- Folding
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldenable = false
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldenable = false
