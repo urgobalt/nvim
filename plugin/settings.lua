@@ -44,7 +44,7 @@ g.netrw_winsize = 25
 
 -- TUI
 opt.termguicolors = true
-opt.colorcolumn = "80,120"
+-- opt.colorcolumn = "80,120"
 opt.conceallevel = 2
 
 -- Folding
