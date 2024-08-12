@@ -21,6 +21,7 @@ telescope.setup({
 })
 
 telescope.load_extension("repo")
+-- telescope.load_extension("cmdline")
 telescope.load_extension("fzy_native")
 
 local builtin = require("telescope.builtin")
@@ -45,5 +46,8 @@ set("n", "<leader>tc", function() builtin.find_files({cwd="/etc/nixos"}) end, {d
 
 -- Repo
 set("n", "<leader>tp", function() telescope.extensions.repo.list({}) end, {desc="Open file in project"})
+
+-- CmdLine
+-- set("n", ":", "<CMD>Telescope cmdline<CR>", {desc="CmdLine"})
 
 -- stylua: ignore end

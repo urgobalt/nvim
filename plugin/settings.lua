@@ -46,6 +46,7 @@ g.netrw_winsize = 25
 opt.termguicolors = true
 -- opt.colorcolumn = "80,120"
 opt.conceallevel = 2
+opt.cmdheight = 1
 
 -- Folding
 -- opt.foldmethod = "expr"
