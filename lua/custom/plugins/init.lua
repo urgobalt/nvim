@@ -48,4 +48,5 @@ return {
 			require("nvim-highlight-colors").setup({})
 		end,
 	},
+	"sitiom/nvim-numbertoggle",
 }
