@@ -49,7 +49,7 @@ require("oil").setup({
 		end,
 		natural_order = true,
 		git = {
-			add = function(path)
+			mv = function()
 				return true
 			end,
 		},
