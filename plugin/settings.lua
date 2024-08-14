@@ -22,7 +22,7 @@ opt.updatetime = 250
 -- Left column
 wo.number = true
 wo.relativenumber = true
-wo.signcolumn = "yes"
+-- wo.signcolumn = "yes"
 
 -- Undo and copy/paste
 opt.undofile = true
