@@ -11,6 +11,9 @@ return {
 				resize_step_y = 2,
 				resize_step_x = 5,
 			},
+			copy_sync = {
+				enable = false,
+			},
 		})
 	end,
 }
