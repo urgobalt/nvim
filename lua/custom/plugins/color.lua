@@ -13,7 +13,6 @@ return {
 			vim.g.rasmus_italic_variables = false
 			vim.g.rasmus_bold_variables = false
 
-			vim.g.rasmus_transparent = true
 			vim.g.rasmus_variant = "dark"
 
 			vim.cmd.colorscheme("rasmus")
