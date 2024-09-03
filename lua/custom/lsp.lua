@@ -48,7 +48,7 @@ local servers = {
 	astro = {},
 	clangd = {},
 	gopls = {},
-	htmx = {},
+	-- htmx = {},
 	["nil"] = {},
 	ocamllsp = {},
 	intelephense = {},
@@ -60,6 +60,7 @@ local servers = {
 	elixirls = {
 		cmd = { "elixir-ls" },
 	},
+	ruff = {},
 }
 
 require("neodev").setup({
