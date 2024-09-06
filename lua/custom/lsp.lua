@@ -60,7 +60,10 @@ local servers = {
 	elixirls = {
 		cmd = { "elixir-ls" },
 	},
-	ruff = {},
+	ruff = {
+		cmd = { "ruff", "--preview" },
+	},
+	pylyzer = {},
 }
 
 require("neodev").setup({
