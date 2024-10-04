@@ -17,7 +17,9 @@ return {
 	{
 		"folke/trouble.nvim",
 		config = function()
-			vim.keymap.set("n", "<leader>o", "<cmd>Trouble<CR>", { desc = "Toggle trouble" })
+			require("trouble").setup({})
+
+			vim.keymap.set("n", "<leader>o", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Toggle trouble" })
 		end,
 	},
 	{

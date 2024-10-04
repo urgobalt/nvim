@@ -31,6 +31,8 @@ local on_attach = function(_, bufnr)
 	})
 end
 
+local lsp = require("lspconfig")
+
 local servers = {
 	tsserver = {},
 	rust_analyzer = {},
@@ -60,10 +62,12 @@ local servers = {
 	elixirls = {
 		cmd = { "elixir-ls" },
 	},
-	ruff = {
-		cmd = { "ruff", "--preview" },
-	},
-	pylyzer = {},
+	-- ruff = {
+	-- 	cmd = { "ruff", "--preview" },
+	-- },
+	-- pylyzer = {},
+	-- jedi_language_server = {},
+	pylsp = {},
 }
 
 require("neodev").setup({
@@ -81,7 +85,6 @@ capabilities.textDocument.foldingRange = {
 	lineFoldingOnly = true,
 }
 
-local lsp = require("lspconfig")
 local configs = require("lspconfig.configs")
 
 -- Custom servers
@@ -91,7 +94,7 @@ if not configs["nil"] then
 			cmd = { "nil" },
 			filetypes = { "nix" },
 			name = "nil",
-			root_dir = lsp.util.root_pattern("configuration.nix", "flake.nix"),
+			root_dir = lsp.util.root_pattern("flake.nix", "configuration.nix"),
 			settings = {},
 		},
 	}
