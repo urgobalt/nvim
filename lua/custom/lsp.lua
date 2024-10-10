@@ -36,10 +36,35 @@ local on_attach = function(on_attach)
 end
 
 local lsp = require("lspconfig")
-
+local default_on_attach_rust=lsp.rust_analyzer.on_attach
 local servers = {
 	tsserver = {},
-	rust_analyzer = {},
+	rust_analyzer = {
+	on_attach = function(client, bufnr)
+	  if default_on_attach_rust then
+	  default_on_attach_rust(client,bufnr)
+	  end
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end,
+	settings = {
+			["rust-analyzer"] = {
+				imports = {
+					granularity = {
+						group = "module",
+					},
+					prefix = "self",
+				},
+				cargo = {
+					buildScripts = {
+						enable = true,
+					},
+				},
+				procMacro = {
+					enable = true,
+				},
+			},
+		},
+	},
 	lua_ls = {
 		settings = {
 			Lua = {
