@@ -41,7 +41,9 @@ local servers = {
 	tsserver = {},
 	rust_analyzer = {
 	on_attach = function(client, bufnr)
+	  if default_on_attach_rust then
 	  default_on_attach_rust(client,bufnr)
+	  end
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end,
 	settings = {
