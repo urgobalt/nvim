@@ -39,7 +39,26 @@ local lsp = require("lspconfig")
 
 local servers = {
 	tsserver = {},
-	rust_analyzer = {},
+	rust_analyzer = {
+		settings = {
+			["rust-analyzer"] = {
+				imports = {
+					granularity = {
+						group = "module",
+					},
+					prefix = "self",
+				},
+				cargo = {
+					buildScripts = {
+						enable = true,
+					},
+				},
+				procMacro = {
+					enable = true,
+				},
+			},
+		},
+	},
 	lua_ls = {
 		settings = {
 			Lua = {
