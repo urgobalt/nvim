@@ -31,7 +31,9 @@ local on_attach = function(on_attach)
 			desc = "Workspace Symbols",
 		})
 
-		on_attach(client, bufnr)
+		if on_attach ~= nil then
+			on_attach(client, bufnr)
+		end
 	end
 end
 
