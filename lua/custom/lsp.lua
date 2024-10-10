@@ -40,7 +40,10 @@ local lsp = require("lspconfig")
 local servers = {
 	tsserver = {},
 	rust_analyzer = {
-		settings = {
+	on_attach = function(client, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end,
+	settings = {
 			["rust-analyzer"] = {
 				imports = {
 					granularity = {
