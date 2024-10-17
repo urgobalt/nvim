@@ -3,7 +3,10 @@ return {
 	dependencies = {
 		"tpope/vim-fugitive",
 		"nvim-telescope/telescope.nvim",
-		"ThePrimeagen/git-worktree.nvim",
+		{
+			"polarmutex/git-worktree.nvim",
+			dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		},
 	},
 	config = function()
 		require("custom.git")

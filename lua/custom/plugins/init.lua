@@ -19,7 +19,12 @@ return {
 		config = function()
 			require("trouble").setup({})
 
-			vim.keymap.set("n", "<leader>o", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Toggle trouble" })
+			vim.keymap.set(
+				"n",
+				"<leader>o",
+				"<cmd>Trouble diagnostics toggle focus=false<CR>",
+				{ desc = "Toggle trouble" }
+			)
 		end,
 	},
 	{

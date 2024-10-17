@@ -24,10 +24,9 @@ local telescope_builtin = require("telescope.builtin")
 set("n", "<leader>gf", telescope_builtin.git_files, { desc = "Find git files" })
 set("n", "<leader>gm", telescope_builtin.git_status, { desc = "List git modifications" })
 set("n", "<leader>gl", telescope_builtin.git_commits, { desc = "List git commits" })
-set("n", "<leader>gC", telescope_builtin.git_branches, { desc = "List and checkout git branch" })
+set("n", "<leader>gS", telescope_builtin.git_branches, { desc = "List and checkout git branch" })
 
 -- Git worktree
-require("git-worktree").setup({})
 telescope.load_extension("git_worktree")
 
 set(
@@ -36,3 +35,4 @@ set(
 	telescope.extensions.git_worktree.git_worktree,
 	{ desc = "Switch, select, and delete git workspaces" }
 )
+set("n", "<leader>gC", telescope.extensions.git_worktree.create_git_worktree)
