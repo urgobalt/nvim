@@ -45,6 +45,10 @@ return {
 				extra_groups = {
 					"NormalFloat",
 					"FloatBorder",
+					"TelescopeNormal",
+					"TelescopeBorder",
+					"TelescopePromptBorder",
+					"FoldColumn",
 				},
 			})
 		end,
