@@ -3,6 +3,7 @@ return {
 		"vague2k/huez.nvim",
 		branch = "stable",
 		event = "UIEnter",
+		import = "huez-manager.import",
 		config = function()
 			require("huez").setup({
 				fallback = "rasmus",
@@ -13,7 +14,9 @@ return {
 				},
 			})
 
-			vim.keymap.set("n", "<leader>tt", "<CMD>Huez<CR>")
+			vim.keymap.set("n", "<leader>ht", "<CMD>Huez<CR>")
+			vim.keymap.set("n", "<leader>hf", "<CMD>HuezFavorites<CR>")
+			vim.keymap.set("n", "<leader>hl", "<CMD>HuezLive<CR>")
 		end,
 	},
 	{
