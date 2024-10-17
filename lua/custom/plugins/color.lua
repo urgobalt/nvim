@@ -1,5 +1,22 @@
 return {
 	{
+		"vague2k/huez.nvim",
+		branch = "stable",
+		event = "UIEnter",
+		config = function()
+			require("huez").setup({
+				fallback = "rasmus",
+				exclude = {
+					"default",
+					"minicyan",
+					"minischeme",
+				},
+			})
+
+			vim.keymap.set("n", "<leader>tt", "<CMD>Huez<CR>")
+		end,
+	},
+	{
 		"kvrohit/rasmus.nvim",
 		config = function()
 			vim.g.rasmus_italic_comments = false
@@ -15,7 +32,7 @@ return {
 
 			vim.g.rasmus_variant = "dark"
 
-			vim.cmd.colorscheme("rasmus")
+			-- vim.cmd.colorscheme("rasmus")
 		end,
 	},
 	{

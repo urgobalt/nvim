@@ -8,7 +8,6 @@ return {
 		"neovim/nvim-lspconfig",
 		"nvim-tree/nvim-web-devicons",
 		"cljoly/telescope-repo.nvim",
-		-- "jonarrien/telescope-cmdline.nvim",
 	},
 	config = function()
 		require("custom.telescope")

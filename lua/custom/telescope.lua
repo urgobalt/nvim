@@ -21,7 +21,6 @@ telescope.setup({
 })
 
 telescope.load_extension("repo")
--- telescope.load_extension("cmdline")
 telescope.load_extension("fzy_native")
 
 local builtin = require("telescope.builtin")
