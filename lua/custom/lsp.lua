@@ -6,7 +6,7 @@ local on_attach = function(on_attach)
 		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, desc = "Lsp [R]ename Symbol" })
 		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Lsp Code [A]ction" })
 		vim.keymap.set("n", "<leader>lq", function()
-			vim.lsp.buf.code_action({ context = { only = { "quickfix" },apply=true } })
+			vim.lsp.buf.code_action({ context = { only = { "quickfix" }, apply = true } })
 		end, { buffer = bufnr, desc = "LSP Code [Q]uickfix" })
 		vim.keymap.set("n", "<leader>lI", function()
 			vim.lsp.buf.code_action({ context = { only = { "refactor.inline" } } })
@@ -38,17 +38,17 @@ local on_attach = function(on_attach)
 end
 
 local lsp = require("lspconfig")
-local default_on_attach_rust=lsp.rust_analyzer.on_attach
+local default_on_attach_rust = lsp.rust_analyzer.on_attach
 local servers = {
 	tsserver = {},
 	rust_analyzer = {
-	on_attach = function(client, bufnr)
-	  if default_on_attach_rust then
-	  default_on_attach_rust(client,bufnr)
-	  end
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end,
-	settings = {
+		on_attach = function(client, bufnr)
+			if default_on_attach_rust then
+				default_on_attach_rust(client, bufnr)
+			end
+			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+		end,
+		settings = {
 			["rust-analyzer"] = {
 				imports = {
 					granularity = {
@@ -99,6 +99,9 @@ local servers = {
 	-- pylyzer = {},
 	-- jedi_language_server = {},
 	pylsp = {},
+	htmx = {},
+	html = {},
+	emmet_ls = {},
 }
 
 require("neodev").setup({
