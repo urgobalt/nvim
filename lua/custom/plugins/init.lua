@@ -56,4 +56,13 @@ return {
 		end,
 	},
 	"sitiom/nvim-numbertoggle",
+	{
+		"ecthelionvi/NeoColumn.nvim",
+		config = function()
+			require("NeoColumn").setup({
+				always_on = true,
+				NeoColumn = { "80", "120" },
+			})
+		end,
+	},
 }
