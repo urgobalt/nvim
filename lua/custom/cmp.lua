@@ -1,4 +1,3 @@
-vim.opt.completeopt = { "menu", "menuone", "noselect", "preview" }
 vim.opt.shortmess:append("c")
 
 local lspkind = require("lspkind")
@@ -6,24 +5,47 @@ lspkind.init({})
 
 local cmp = require("cmp")
 
+function not_in_comments()
+	-- disable completion in comments
+	local context = require("cmp.config.context")
+	-- keep command mode completion enabled when cursor is in a comment
+	if vim.api.nvim_get_mode().mode == "c" then
+		return true
+	else
+		return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+	end
+end
+
 cmp.setup({
+	enabled = true,
 	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "path" },
-		{ name = "buffer" },
+		{ name = "nvim_lsp", priority = 10 },
+		{ name = "path", priority = 8 },
+		{ name = "luasnip", priority = 4 },
+		{ name = "buffer", priority = 1 },
 	},
 	mapping = {
 		["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 		["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-		["<c-y>"] = cmp.mapping(cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Insert,
-			select = true,
-		})),
+		["<c-y>"] = cmp.mapping(
+			cmp.mapping.confirm({
+				behavior = cmp.ConfirmBehavior.Insert,
+				select = true,
+			}),
+			{ "i", "c" }
+		),
 	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
 		end,
+	},
+	completion = {
+		autocomplete = {
+			cmp.TriggerEvent.TextChanged,
+			cmp.TriggerEvent.InsertEnter,
+		},
+		completeopt = "menu,menuone,noselect,preview",
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
@@ -57,9 +79,10 @@ cmp.setup.cmdline("/", {
 })
 
 cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
-		{ name = "buffer" },
+		{ name = "cmdline", priority = 10 },
+		{ name = "path", priority = 5 },
+		{ name = "buffer", priority = 1 },
 	}, {
 		{
 			name = "cmdline",
@@ -87,3 +110,6 @@ vim.keymap.set({ "i", "s" }, "<c-j>", function()
 		ls.jump(-1)
 	end
 end, { silent = true })
+
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

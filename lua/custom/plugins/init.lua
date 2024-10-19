@@ -1,10 +1,5 @@
 return {
 	"tpope/vim-surround",
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
-	},
 	{ "NMAC427/guess-indent.nvim", config = true },
 	{ "folke/todo-comments.nvim", config = true },
 	{ "RaafatTurki/hex.nvim", config = true },
