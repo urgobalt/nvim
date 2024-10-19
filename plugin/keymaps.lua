@@ -17,6 +17,10 @@ set("n", "<C-w>q", "<cmd>close<CR>", { desc = "Close window without closing neov
 -- set("n", "<c-m-l>", "<c-w>5>")
 -- set("n", "<c-m-h>", "<c-w>5<")
 
+-- Indentation of multiple lines
+set("v", ">", ">gv", { desc = "Indent lines and stay in selection" })
+set("v", "<", "<gv", { desc = "Unindenting lines and stay in selection" })
+
 -- Toggle hlsearch if it is currently active
 set("n", "<CR>", function()
 	---@diagnostic disable-next-line: undefined-field
