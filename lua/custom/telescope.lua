@@ -9,8 +9,9 @@ telescope.setup({
 		repo = {
 			list = {
 				search_dirs = { "~/projects" },
-				tail_path = true,
+				tail_path = false,
 				fd_opts = { "--prune" },
+				cwd = vim.fn.expand("$HOME/projects"),
 			},
 		},
 		fzy_native = {
