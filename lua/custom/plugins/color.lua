@@ -20,6 +20,21 @@ return {
 		end,
 	},
 	{
+		"xiyaowong/transparent.nvim",
+		config = function()
+			require("transparent").setup({
+				extra_groups = {
+					"NormalFloat",
+					"FloatBorder",
+					"TelescopeNormal",
+					"TelescopeBorder",
+					"TelescopePromptBorder",
+					"FoldColumn",
+				},
+			})
+		end,
+	},
+	{
 		"kvrohit/rasmus.nvim",
 		config = function()
 			vim.g.rasmus_italic_comments = false
@@ -39,18 +54,12 @@ return {
 		end,
 	},
 	{
-		"xiyaowong/transparent.nvim",
-		config = function()
-			require("transparent").setup({
-				extra_groups = {
-					"NormalFloat",
-					"FloatBorder",
-					"TelescopeNormal",
-					"TelescopeBorder",
-					"TelescopePromptBorder",
-					"FoldColumn",
-				},
-			})
-		end,
+		"zenbones-theme/zenbones.nvim",
+		dependencies = "rktjmp/lush.nvim",
+		lazy = false,
+		priority = 1000,
 	},
+	"rebelot/kanagawa.nvim",
+	"vim-scripts/MountainDew.vim",
+	"TheNiteCoder/mountaineer.vim",
 }

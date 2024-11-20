@@ -35,4 +35,16 @@ set(
 	telescope.extensions.git_worktree.git_worktree,
 	{ desc = "Switch, select, and delete git workspaces" }
 )
-set("n", "<leader>gC", telescope.extensions.git_worktree.create_git_worktree)
+
+local Hooks = require("git-worktree.hooks")
+Hooks.register(Hooks.type.SWITCH, Hooks.builtins.update_current_buffer_on_switch)
+Hooks.register(Hooks.type.SWITCH, function(path, prev_path)
+	vim.notify("switched from " .. prev_path .. " to " .. path)
+end)
+
+-- Diffview
+set("n", "<leader>dv", "<CMD>DiffviewOpen<CR>")
+
+--
+require("litee.lib").setup()
+require("litee.gh").setup({})

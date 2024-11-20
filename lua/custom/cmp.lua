@@ -1,3 +1,4 @@
+vim.opt.completeopt = { "menu", "menuone", "noselect", "preview" }
 vim.opt.shortmess:append("c")
 
 local lspkind = require("lspkind")
@@ -25,8 +26,8 @@ cmp.setup({
 		{ name = "buffer", priority = 1 },
 	},
 	mapping = {
-		["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-		["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
+		["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
 		["<c-y>"] = cmp.mapping(
 			cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Insert,
@@ -45,7 +46,6 @@ cmp.setup({
 			cmp.TriggerEvent.TextChanged,
 			cmp.TriggerEvent.InsertEnter,
 		},
-		completeopt = "menu,menuone,noselect,preview",
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
