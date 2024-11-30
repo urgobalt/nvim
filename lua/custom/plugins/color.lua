@@ -76,5 +76,4 @@ return {
 			require("colortils").setup()
 		end,
 	},
-	"rktjmp/lush.nvim",
 }
