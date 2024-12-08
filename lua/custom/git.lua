@@ -42,8 +42,25 @@ Hooks.register(Hooks.type.SWITCH, function(path, prev_path)
 	vim.notify("switched from " .. prev_path .. " to " .. path)
 end)
 
--- Diffview
-set("n", "<leader>dv", "<CMD>DiffviewOpen<CR>")
+-- Git conflict
+require("git-conflict").setup({
+	default_mappings = false,
+	disable_diagnostics = true,
+	list_opener = "copen",
+	highlights = { -- They must have background color, otherwise the default color will be used
+		incoming = "DiffAdd",
+		current = "DiffText",
+	},
+	debug = false,
+})
+
+set("n", "<leader>cq", "<CMD>GitConflictListQf<CR>")
+set("n", "<leader>cn", "<CMD>GitConflictNextConflict<CR>")
+set("n", "<leader>cp", "<CMD>GitConflictPrevConflict<CR>")
+set("n", "<leader>co", "<CMD>GitConflictChooseOurs<CR>")
+set("n", "<leader>ct", "<CMD>GitConflictChooseTheirs<CR>")
+set("n", "<leader>cb", "<CMD>GitConflictChooseBoth<CR>")
+set("n", "<leader>cd", "<CMD>GitConflictChooseNone<CR>")
 
 --
 require("litee.lib").setup()

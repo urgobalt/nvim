@@ -26,7 +26,7 @@ theme.loadSyntax = function ()
     PreCondit =      { fg = mountain.ume }, -- preprocessor #if, #else, #endif, etc.
     Special =        { fg = mountain.tetsu, bg = mountain.none, style = "italic" }, -- any special symbol
     SpecialChar =    { fg = mountain.ume }, -- special character in a constant
-    Tag =            { fg = mountain.tetsu }, -- you can use CTRL-] on this
+    Tag =            { fg = mountain.mizu }, -- you can use CTRL-] on this
     Delimiter =      { fg = mountain.tetsu }, -- character that needs attention like , or .
     SpecialComment = { fg = mountain.chikyu }, -- special things inside a comment
     Debug =          { fg = mountain.take }, -- debugging statements
@@ -190,7 +190,7 @@ theme.loadTreeSitter = function ()
     TSNumber =            { fg = mountain.kaen },    -- For all number
     TSString =            { fg = mountain.kosumosu },    -- For strings.
 
-    TSAttribute =         { fg = mountain.kaen },    -- (unstable) TODO: docs
+    TSAttribute =         { fg = mountain.chikyu },    -- (unstable) TODO: docs
     TSBoolean=            { fg = mountain.aki },    -- For booleans.
     TSConstBuiltin =      { fg = mountain.yuki },    -- For constant that are built in the language: `nil` in Lua.
     TSConstMacro =        { fg = mountain.yuki },    -- For constants that are defined by macros: `NULL` in C.
@@ -213,7 +213,7 @@ theme.loadTreeSitter = function ()
     TSSymbol =            { fg = mountain.kaen },    -- For identifiers referring to symbols or atoms.
     TSType =              { fg = mountain.aki},    -- For types.
     TSTypeBuiltin =       { fg = mountain.aki},    -- For builtin types.
-    TSTag =               { fg = mountain.tetsu },    -- Tags like html tag names.
+    TSTag =               { fg = mountain.aki },    -- Tags like html tag names.
     TSTagDelimiter =      { fg = mountain.kaen },    -- Tag delimiter like `<` `>` `/`
     TSText =              { fg = mountain.text },    -- For strings considemountain11_gui text in a markup language.
     TSTextReference =     { fg = mountain.kaen }, -- FIXME

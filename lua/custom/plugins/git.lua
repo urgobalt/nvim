@@ -2,7 +2,7 @@ return {
 	"lewis6991/gitsigns.nvim",
 	dependencies = {
 		"tpope/vim-fugitive",
-		"sindrets/diffview.nvim",
+		{ "akinsho/git-conflict.nvim", version = "*" },
 		"polarmutex/git-worktree.nvim",
 		"ldelossa/gh.nvim",
 		-- Not really git

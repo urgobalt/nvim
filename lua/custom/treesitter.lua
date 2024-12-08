@@ -14,12 +14,17 @@ require("nvim-treesitter.configs").setup({
 		"fish",
 		"markdown",
 		"markdown_inline",
+		"zig",
+		"nix",
 	},
 	auto_install = true,
 	highlight = {
 		enable = true,
+		additional_vim_regex_highlighting = false,
 	},
 	indent = {
 		enable = true,
 	},
+	modules = {},
+	ignore_install = {},
 })

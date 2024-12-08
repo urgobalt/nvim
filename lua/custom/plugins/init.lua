@@ -26,7 +26,6 @@ return {
 		"laytan/cloak.nvim",
 		config = function()
 			require("cloak").setup({})
-			vim.keymap.set("n", "<leader>ct", "<cmd>CloakToggle<CR>", { desc = "Toggle cloak" })
 		end,
 	},
 	{
@@ -54,4 +53,5 @@ return {
 			})
 		end,
 	},
+	{ "yorickpeterse/nvim-pqf", config = true },
 }
