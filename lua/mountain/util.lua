@@ -95,8 +95,8 @@ function util.load()
 	-- load the rest later ( lsp, treesitter, plugins )
 	async:send()
 
-  -- Relink things that is misconfigured by default
-  util.relink()
+	-- Relink things that is misconfigured by default
+	util.relink()
 end
 
 function util.relink()
