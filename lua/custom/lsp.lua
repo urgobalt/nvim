@@ -75,7 +75,18 @@ local servers = {
 		},
 	},
 	astro = {},
-	clangd = {},
+	clangd = {
+		cmd = (function()
+			local cmd = { "clangd" }
+			local isystem = os.getenv("ISYSTEM")
+
+			if isystem ~= "" then
+				cmd[#cmd + 1] = "--query-driver=" .. isystem
+			end
+
+			return cmd
+		end)(),
+	},
 	gopls = {},
 	-- htmx = {},
 	["nil"] = {},
