@@ -80,7 +80,7 @@ local servers = {
 			local cmd = { "clangd" }
 			local isystem = os.getenv("ISYSTEM")
 
-			if isystem ~= nil or isystem ~= "" then
+			if isystem ~= nil and isystem ~= "" then
 				cmd[#cmd + 1] = "--query-driver=" .. isystem
 			end
 
