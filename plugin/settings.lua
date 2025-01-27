@@ -2,9 +2,6 @@ local opt = vim.opt
 local wo = vim.wo
 local g = vim.g
 
--- Don't have `o` add a comment
-opt.formatoptions:remove "o"
-
 -- Remove trailing LF characters
 g.noendofline = "binary"
 
