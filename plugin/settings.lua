@@ -35,7 +35,7 @@ opt.hlsearch = false
 
 -- Movement
 opt.scrolloff = 999
-opt.jumpoptions = "stack"
+opt.jumpoptions = "clean"
 
 -- Netrw
 g.netrw_browse_split = 0
