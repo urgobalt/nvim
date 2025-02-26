@@ -10,4 +10,4 @@ terminal.setup({
 vim.keymap.set("t", "<C-n>", "<C-\\><C-n>", { noremap = true, desc = "Leave terminal mode" })
 
 -- Manage terminals
-vim.keymap.set("n", "<C-t>", terminal.open, { desc = "Open terminal" })
+vim.keymap.set({ "n", "o" }, "<C-t>", terminal.open, { desc = "Open terminal" })
