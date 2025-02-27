@@ -1,6 +1,6 @@
 --- @type table<string, blink.cmp.KeymapCommand[]>
 local custom_keymaps = {
-	["<C-y>"] = { "select_accept_and_enter" },
+	["<C-y>"] = { "select_and_accept" },
 	["<C-e>"] = { "cancel" },
 	["<C-n>"] = { "select_next" },
 	["<C-p>"] = { "select_prev" },
