@@ -66,3 +66,21 @@ local folder_picker = require("telescope.pickers").new({
 vim.keymap.set("n", "<leader>bd", function()
 	folder_picker:find()
 end, { desc = "Open directory with Oil" })
+
+-- Goto system config
+local hostname = vim.system({ "hostname" }):wait().stdout:gsub("%s+", "")
+vim.keymap.set(
+	"n",
+	"<leader>cs",
+	"<CMD>Oil /etc/nixos/hosts/" .. hostname .. "<CR>",
+	{ desc = "Go to the configuration directory sensible-nix system" }
+)
+
+-- Goto neovim config
+local config_dir = vim.fn.stdpath("config")
+vim.keymap.set(
+	"n",
+	"<leader>cc",
+	"<CMD>Oil " .. config_dir .. "<CR>",
+	{ desc = "Go to the configuration directory of neovim" }
+)

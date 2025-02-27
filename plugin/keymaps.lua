@@ -34,7 +34,3 @@ end, { expr = true })
 
 -- Remap macro record
 set("n", "§", "q")
-
--- Goto system config
-local hostname = vim.system({ "hostname" }):wait().stdout
-set("n", "<leader>cc", "<CMD>Oil /etc/nixos/hosts/" .. hostname)
