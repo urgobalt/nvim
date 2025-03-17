@@ -1,47 +1,47 @@
 --- @type table<string, blink.cmp.KeymapCommand[]>
 local custom_keymaps = {
-	["<C-y>"] = { "select_and_accept" },
-	["<C-e>"] = { "cancel" },
-	["<C-n>"] = { "select_next" },
-	["<C-p>"] = { "select_prev" },
+  ["<C-y>"] = { "select_and_accept" },
+  ["<C-e>"] = { "cancel" },
+  ["<C-n>"] = { "select_next" },
+  ["<C-p>"] = { "select_prev" },
 }
 
 require("blink.cmp").setup({
-	-- 'default' for mappings similar to built-in completion
-	-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-	-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-	-- See the full "keymap" documentation for information on defining your own keymap.
-	keymap = custom_keymaps,
+  -- 'default' for mappings similar to built-in completion
+  -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+  -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+  -- See the full "keymap" documentation for information on defining your own keymap.
+  keymap = custom_keymaps,
 
-	appearance = {
-		use_nvim_cmp_as_default = true,
-		-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-		-- Adjusts spacing to ensure icons are aligned
-		nerd_font_variant = "mono",
-	},
+  appearance = {
+    use_nvim_cmp_as_default = true,
+    -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+    -- Adjusts spacing to ensure icons are aligned
+    nerd_font_variant = "mono",
+  },
 
-	sources = {
-		default = function()
-			if vim.bo.filetype == "sql" then
-				return { "dadbod", "buffer" }
-			end
+  sources = {
+    default = function()
+      if vim.bo.filetype == "sql" then
+        return { "dadbod", "buffer" }
+      end
 
-			return { "lsp", "path", "snippets", "buffer" }
-		end,
-		providers = {
-			dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-		},
-	},
-	completion = {
-		keyword = { range = "prefix" },
-		menu = { auto_show = true },
-		documentation = { auto_show = true, auto_show_delay_ms = 1000 },
-		ghost_text = { enabled = true },
-	},
-	cmdline = {
-		completion = {
-			menu = { auto_show = true },
-		},
-		keymap = custom_keymaps,
-	},
+      return { "lsp", "path", "snippets", "buffer" }
+    end,
+    providers = {
+      dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+    },
+  },
+  completion = {
+    keyword = { range = "prefix" },
+    menu = { auto_show = true },
+    documentation = { auto_show = true, auto_show_delay_ms = 1000 },
+    ghost_text = { enabled = true },
+  },
+  cmdline = {
+    completion = {
+      menu = { auto_show = true },
+    },
+    keymap = custom_keymaps,
+  },
 })

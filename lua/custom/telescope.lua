@@ -23,6 +23,7 @@ telescope.setup({
 
 telescope.load_extension("repo")
 telescope.load_extension("fzy_native")
+telescope.load_extension("find_template")
 
 local builtin = require("telescope.builtin")
 
