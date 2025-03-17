@@ -39,7 +39,7 @@ end
 
 local lsp = require("lspconfig")
 local servers = {
-	tsserver = {},
+	ts_ls = {},
 	rust_analyzer = {
 		on_attach = function(_, bufnr)
 			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
