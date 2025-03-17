@@ -2,23 +2,23 @@ local set = vim.keymap.set
 
 local telescope = require("telescope")
 telescope.setup({
-	defaults = {
-		initial_mode = "normal",
-	},
-	extensions = {
-		repo = {
-			list = {
-				search_dirs = { "~/projects" },
-				tail_path = false,
-				fd_opts = { "--prune" },
-				cwd = vim.fn.expand("$HOME/projects"),
-			},
-		},
-		fzy_native = {
-			override_generic_sorter = false,
-			override_file_sorter = true,
-		},
-	},
+  defaults = {
+    initial_mode = "normal",
+  },
+  extensions = {
+    repo = {
+      list = {
+        search_dirs = { "~/projects" },
+        tail_path = false,
+        fd_opts = { "--prune" },
+        cwd = vim.fn.expand("$HOME/projects"),
+      },
+    },
+    fzy_native = {
+      override_generic_sorter = false,
+      override_file_sorter = true,
+    },
+  },
 })
 
 telescope.load_extension("repo")

@@ -8,38 +8,38 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 vim.keymap.set("n", "zr", function()
-	require("ufo").openFoldsExceptKinds({ "imports" })
+  require("ufo").openFoldsExceptKinds({ "imports" })
 end)
 vim.keymap.set("n", "zm1", function()
-	require("ufo").closeFoldsWith(1)
+  require("ufo").closeFoldsWith(1)
 end)
 vim.keymap.set("n", "zm2", function()
-	require("ufo").closeFoldsWith(2)
+  require("ufo").closeFoldsWith(2)
 end)
 vim.keymap.set("n", "zm3", function()
-	require("ufo").closeFoldsWith(3)
+  require("ufo").closeFoldsWith(3)
 end)
 vim.keymap.set("n", "K", function()
-	local winid = require("ufo").peekFoldedLinesUnderCursor()
-	if not winid then
-		vim.lsp.buf.hover()
-	end
+  local winid = require("ufo").peekFoldedLinesUnderCursor()
+  if not winid then
+    vim.lsp.buf.hover()
+  end
 end)
 
 require("ufo").setup({
-	provider_selector = function(bufnr, filetype, buftype)
-		if filetype == "markdown" then
-			return { "treesitter", "indent" }
-		end
+  provider_selector = function(bufnr, filetype, buftype)
+    if filetype == "markdown" then
+      return { "treesitter", "indent" }
+    end
 
-		return { "lsp", "indent" }
-	end,
-	close_fold_kinds_for_ft = {
-		default = { "imports", "comment" },
-	},
-	preview = {
-		win_config = {
-			winblend = 0,
-		},
-	},
+    return { "lsp", "indent" }
+  end,
+  close_fold_kinds_for_ft = {
+    default = { "imports", "comment" },
+  },
+  preview = {
+    win_config = {
+      winblend = 0,
+    },
+  },
 })

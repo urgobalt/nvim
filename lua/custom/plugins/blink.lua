@@ -1,16 +1,16 @@
 return {
-	"saghen/blink.cmp",
-	dependencies = {
-		"rafamadriz/friendly-snippets",
-		"tpope/vim-dadbod",
-		"kristijanhusak/vim-dadbod-completion",
-		"kristijanhusak/vim-dadbod-ui",
-	},
+  "saghen/blink.cmp",
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    "tpope/vim-dadbod",
+    "kristijanhusak/vim-dadbod-completion",
+    "kristijanhusak/vim-dadbod-ui",
+  },
 
-	version = "*",
+  version = "*",
 
-	config = function()
-		require("custom.blink")
-	end,
-	opts_extend = { "sources.default" },
+  config = function()
+    require("custom.blink")
+  end,
+  opts_extend = { "sources.default" },
 }
