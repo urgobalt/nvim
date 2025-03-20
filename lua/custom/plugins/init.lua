@@ -66,5 +66,4 @@ return {
     end,
   },
   { "yorickpeterse/nvim-pqf", config = true },
-  { "actionshrimp/direnv.nvim", config = true },
 }
