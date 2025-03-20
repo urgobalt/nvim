@@ -77,7 +77,23 @@ end
 
 local lsp = require("lspconfig")
 local servers = {
-  ts_ls = {},
+  ts_ls = {
+    init_options = {
+      plugins = {
+        {
+          name = "@vue/typescript-plugin",
+          location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+          languages = { "javascript", "typescript", "vue" },
+        },
+      },
+    },
+    filetypes = {
+      "javascript",
+      "typescript",
+      "vue",
+    },
+  },
+  volar = {},
   rust_analyzer = {
     on_attach = function(_, bufnr)
       vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
@@ -131,17 +147,24 @@ local servers = {
   ocamllsp = {},
   intelephense = {
     settings = {
-			-- stylua: ignore start
-			stubs = {
-				"apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype", "curl", "date",
-				"dba", "dom", "enchant", "exif", "FFI", "fileinfo", "filter", "fpm", "ftp", "gd", "gettext",
-				"gmp", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml", "mbstring", "meta", "mysqli",
-				"oci8", "odbc", "openssl", "pcntl", "pcre", "PDO", "pdo_ibm", "pdo_mysql", "pdo_pgsql", "pdo_sqlite", "pgsql",
-				"Phar", "posix", "pspell", "readline", "Reflection", "session", "shmop", "SimpleXML", "snmp", "soap",
-				"sockets", "sodium", "SPL", "sqlite3", "standard", "superglobals", "sysvmsg", "sysvsem", "sysvshm", "tidy",
-				"tokenizer", "xml", "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib",
-				"wordpress", "phpunit",
-			},
+      -- stylua: ignore start
+      stubs = {
+        "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype",
+        "curl", "date",
+        "dba", "dom", "enchant", "exif", "FFI", "fileinfo", "filter", "fpm",
+        "ftp", "gd", "gettext",
+        "gmp", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml",
+        "mbstring", "meta", "mysqli",
+        "oci8", "odbc", "openssl", "pcntl", "pcre", "PDO", "pdo_ibm", "pdo_mysql",
+        "pdo_pgsql", "pdo_sqlite", "pgsql",
+        "Phar", "posix", "pspell", "readline", "Reflection", "session", "shmop",
+        "SimpleXML", "snmp", "soap",
+        "sockets", "sodium", "SPL", "sqlite3", "standard", "superglobals",
+        "sysvmsg", "sysvsem", "sysvshm", "tidy",
+        "tokenizer", "xml", "xmlreader", "xmlrpc", "xmlwriter", "xsl",
+        "Zend OPcache", "zip", "zlib",
+        "wordpress", "phpunit",
+      },
       -- stylua: ignore end
       diagnostics = {
         enable = true,
