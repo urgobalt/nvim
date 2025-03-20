@@ -186,7 +186,9 @@ local servers = {
   -- pylyzer = {},
   -- jedi_language_server = {},
   pylsp = {},
-  htmx = {},
+  htmx = {
+    filetypes = { "html" },
+  },
   html = {},
   emmet_ls = {},
 }

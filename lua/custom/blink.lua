@@ -37,6 +37,24 @@ require("blink.cmp").setup({
     menu = { auto_show = true },
     documentation = { auto_show = true, auto_show_delay_ms = 1000 },
     ghost_text = { enabled = true },
+
+    accept = {
+      create_undo_point = true,
+      auto_brackets = {
+        enabled = true,
+        default_brackets = { "(", ")" },
+        override_brackets_for_filetypes = {},
+        kind_resolution = {
+          enabled = true,
+          blocked_filetypes = { "typescriptreact", "javascriptreact", "vue" },
+        },
+        semantic_token_resolution = {
+          enabled = true,
+          blocked_filetypes = {},
+          timeout_ms = 400,
+        },
+      },
+    },
   },
   cmdline = {
     completion = {
