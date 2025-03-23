@@ -90,6 +90,8 @@ local servers = {
     filetypes = {
       "javascript",
       "typescript",
+      "javascriptreact",
+      "typescriptreact",
       "vue",
     },
   },
@@ -186,9 +188,6 @@ local servers = {
   -- pylyzer = {},
   -- jedi_language_server = {},
   pylsp = {},
-  htmx = {
-    filetypes = { "html" },
-  },
   html = {},
   emmet_ls = {},
 }
