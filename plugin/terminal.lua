@@ -20,24 +20,31 @@ vim.keymap.set({ "n", "o" }, "<C-t>", function()
   end
   local cmd = input
   local bufnr = vim.api.nvim_create_buf(true, true)
+  local chanopen = true
   local chan = 0
 
   local function write_to_term(_, data)
-    data = data or ""
-    pcall(vim.api.nvim_chan_send, chan, vim.fn.join(data, "\n"))
+    if chanopen then
+      data = data or ""
+      pcall(vim.api.nvim_chan_send, chan, vim.fn.join(data, "\n"))
+    end
   end
 
+  local jobopen = true
   local jobid = vim.fn.jobstart(cmd, {
     on_stdout = write_to_term,
-    on_stderr = write_to_term,
     on_exit = function(_, code, _)
-      pcall(
-        vim.api.nvim_chan_send,
-        chan,
-        "\n\n[command exited with code '" .. code .. "']"
-      )
+      if chanopen then
+        pcall(
+          vim.api.nvim_chan_send,
+          chan,
+          "\n\n[command exited with code '" .. code .. "']"
+        )
+      end
+      jobopen = false
     end,
     pty = true,
+    height = 10000,
     detach = false,
     env = {
       TERM = vim.env.TERM,
@@ -45,17 +52,29 @@ vim.keymap.set({ "n", "o" }, "<C-t>", function()
   })
   vim.api.nvim_create_autocmd("BufDelete", {
     callback = function(args)
-      local buf_num = args.buf
-      if buf_num == bufnr then
-        local pid = vim.fn.jobpid(jobid)
-        pcall(vim.fn.system, "kill $(ps -s " .. pid .. " -o pid=)")
-        pcall(vim.fn.jobstop, jobid)
+      if args.buf == bufnr then
+        if jobopen then
+          local pid = vim.fn.jobpid(jobid)
+          pcall(vim.fn.system, "kill $(ps -s " .. pid .. " -o pid=)")
+          pcall(vim.fn.jobstop, jobid)
+        end
+        vim.api.nvim_del_autocmd(args.id)
+      end
+    end,
+  })
+  vim.api.nvim_create_autocmd("TermClose", {
+    callback = function(args)
+      if args.buf == bufnr then
+        chanopen = false
         vim.api.nvim_del_autocmd(args.id)
       end
     end,
   })
   chan = vim.api.nvim_open_term(bufnr, {
     on_input = function(_, _, _, data)
+      if not jobopen then
+        return
+      end
       vim.fn.chansend(jobid, data)
     end,
   })
