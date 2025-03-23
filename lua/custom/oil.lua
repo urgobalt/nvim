@@ -1,4 +1,5 @@
-require("oil").setup({
+local oil = require("oil")
+oil.setup({
   default_file_explorer = true,
   keymaps = {
     ["g?"] = "actions.show_help",
@@ -66,25 +67,38 @@ require("oil").setup({
 vim.keymap.set(
   "n",
   "-",
-  require("oil").open,
+  oil.open,
   { remap = true, desc = "Open file explorer" }
 )
 
-local folder_picker = require("telescope.pickers").new({
-  cwd = "/",
-  clear = true,
-  finder = require("telescope.finders").new_job({
-    "fd",
-    "--type",
-    "d",
-    "--color",
-    "never",
-  }),
-}, {})
+vim.keymap.set("n", "<leader>.", function()
+  local current_directory
+  if vim.o.filetype == "oil" then
+    current_directory = oil.get_current_dir(0)
+  else
+    current_directory = vim.fn.expand("%:p:h")
+  end
+  print("cwd: " .. current_directory)
+  vim.fn.chdir(current_directory)
+end, {
+  desc = "Change the working directory of the neovim process to the current directory using oil",
+})
 
-vim.keymap.set("n", "<leader>bd", function()
-  folder_picker:find()
-end, { desc = "Open directory with Oil" })
+-- local folder_picker = require("telescope.pickers").new({
+--   cwd = "/",
+--   clear = true,
+--   finder = require("telescope.finders").new_job({
+--     "fd",
+--     "--type",
+--     "d",
+--     "--color",
+--     "never",
+--   }),
+-- }, {})
+--
+-- vim.keymap.set("n", "<leader>bd", function()
+--   folder_picker:find()
+-- end, { desc = "Open directory with Oil" })
 
 -- Goto system config
 local hostname = vim.system({ "hostname" }):wait().stdout:gsub("%s+", "")

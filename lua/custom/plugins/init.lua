@@ -54,7 +54,21 @@ return {
       )
     end,
   },
-  "airblade/vim-rooter",
+  {
+    "airblade/vim-rooter",
+    config = function()
+      vim.g.rooter_patterns = {
+        ".git",
+        ".jj",
+        "node_modules",
+        "package.json",
+        "cargo.toml",
+        "project.json",
+      }
+
+      vim.g.rooter_buftypes = { "", "acwrite" }
+    end,
+  },
   "sitiom/nvim-numbertoggle",
   {
     "ecthelionvi/NeoColumn.nvim",
