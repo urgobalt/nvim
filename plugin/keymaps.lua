@@ -39,3 +39,6 @@ end, { expr = true })
 
 -- Remap macro record
 set("n", "§", "q")
+
+-- Ctrl+Backspace support
+set("i", "<C-BS>", "<C-W>")
