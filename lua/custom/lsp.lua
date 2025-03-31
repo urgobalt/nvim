@@ -112,6 +112,15 @@ local servers = {
           buildScripts = {
             enable = true,
           },
+          target = os.getenv("RUST_TARGET"),
+          allTargets = true,
+          features = (function()
+            local features = os.getenv("RUST_FEATURES")
+            if features == nil then
+              return {}
+            end
+            return vim.split(features, ",")
+          end)(),
         },
         procMacro = {
           enable = true,
