@@ -108,12 +108,14 @@ local servers = {
           },
           prefix = "self",
         },
+        check = {
+          allTargets = true,
+        },
         cargo = {
           buildScripts = {
             enable = true,
           },
           target = os.getenv("RUST_TARGET"),
-          allTargets = true,
           features = (function()
             local features = os.getenv("RUST_FEATURES")
             if features == nil then
