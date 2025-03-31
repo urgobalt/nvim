@@ -36,7 +36,7 @@ require("blink.cmp").setup({
     keyword = { range = "prefix" },
     menu = { auto_show = true },
     documentation = { auto_show = true, auto_show_delay_ms = 1000 },
-    ghost_text = { enabled = true },
+    ghost_text = { enabled = false },
 
     accept = {
       create_undo_point = true,
