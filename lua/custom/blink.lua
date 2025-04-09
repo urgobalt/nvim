@@ -26,10 +26,15 @@ require("blink.cmp").setup({
         return { "dadbod", "buffer" }
       end
 
-      return { "lsp", "path", "snippets", "buffer" }
+      return { "lazydev", "lsp", "path", "snippets", "buffer" }
     end,
     providers = {
       dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+      lazydev = {
+        name = "LazyDev",
+        module = "lazydev.integrations.blink",
+        score_offset = 100,
+      },
     },
   },
   completion = {

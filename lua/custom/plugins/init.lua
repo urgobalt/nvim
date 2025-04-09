@@ -1,4 +1,5 @@
 return {
+  { "folke/neoconf.nvim", config = true },
   "tpope/vim-surround",
   { "NMAC427/guess-indent.nvim", enabled = false, config = true },
   { "folke/todo-comments.nvim", config = true },
@@ -64,6 +65,11 @@ return {
         "package.json",
         "cargo.toml",
         "project.json",
+        ".direnv",
+        "dune-project",
+        "Dockerfile",
+        "docker-compose.yaml",
+        "docker-compose.yml",
       }
 
       vim.g.rooter_buftypes = { "", "acwrite" }

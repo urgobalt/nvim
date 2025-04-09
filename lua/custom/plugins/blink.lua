@@ -1,6 +1,11 @@
 return {
   "saghen/blink.cmp",
   dependencies = {
+    {
+      "folke/lazydev.nvim",
+      ft = "lua",
+      config = true,
+    },
     "rafamadriz/friendly-snippets",
     "tpope/vim-dadbod",
     "kristijanhusak/vim-dadbod-completion",

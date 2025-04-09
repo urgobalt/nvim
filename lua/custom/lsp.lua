@@ -1,3 +1,5 @@
+local neoconf = require("neoconf")
+
 local on_attach = function(on_attach)
   return function(client, bufnr)
     local telescope = require("telescope.builtin")
@@ -82,7 +84,17 @@ local servers = {
       plugins = {
         {
           name = "@vue/typescript-plugin",
-          location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+          location = neoconf.get("typescript.vue_plugin", {
+            (function()
+              --- @type string|nil
+              --- @diagnostic disable-next-line
+              local root = lsp.util.root_pattern("package.json")
+              if root == nil then
+                return nil
+              end
+              return root .. "/node_modules/@vue/typescript-plugin"
+            end)(),
+          }, { ["local"] = true, global = false }),
           languages = { "javascript", "typescript", "vue" },
         },
       },
@@ -135,6 +147,7 @@ local servers = {
       Lua = {
         workspace = { checkThirdParty = false },
         telemetry = { enable = false },
+        diagnostics = { enable = true },
         completion = {
           callSnippet = "Replace",
         },
@@ -202,14 +215,6 @@ local servers = {
   html = {},
   emmet_ls = {},
 }
-
-require("neodev").setup({
-  override = function(_, library)
-    library.enabled = true
-    library.plugins = true
-  end,
-  pathStrict = true,
-})
 
 require("nx").setup({})
 require("telescope").load_extension("nx")

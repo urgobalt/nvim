@@ -48,6 +48,9 @@ opt.termguicolors = true
 opt.conceallevel = 2
 opt.cmdheight = 1
 
+-- .editorconfig
+g.editorconfig = true
+
 -- Folding
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
