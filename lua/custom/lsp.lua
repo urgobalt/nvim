@@ -80,25 +80,16 @@ end
 local lsp = require("lspconfig")
 local servers = {
   ts_ls = {
-    init_options = {
-      plugins = {
-        {
-          name = "@vue/typescript-plugin",
-          location = neoconf.get("typescript.vue_plugin", {
-            (function()
-              --- @type string|nil
-              --- @diagnostic disable-next-line
-              local root = lsp.util.root_pattern("package.json")
-              if root == nil then
-                return nil
-              end
-              return root .. "/node_modules/@vue/typescript-plugin"
-            end)(),
-          }, { ["local"] = true, global = false }),
-          languages = { "javascript", "typescript", "vue" },
-        },
+    settings = {
+      tsserver_plugins = {
+        "@vue/typescript-plugin",
       },
     },
+    -- init_options = {
+    --   plugins = {
+    --     "@vue/typescript-plugin",
+    --   },
+    -- },
     filetypes = {
       "javascript",
       "typescript",
