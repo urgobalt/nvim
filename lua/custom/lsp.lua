@@ -1,5 +1,4 @@
-local neoconf = require("neoconf")
-
+require("neoconf").setup({})
 local on_attach = function(on_attach)
   return function(client, bufnr)
     local telescope = require("telescope.builtin")
@@ -79,25 +78,6 @@ end
 
 local lsp = require("lspconfig")
 local servers = {
-  ts_ls = {
-    settings = {
-      tsserver_plugins = {
-        "@vue/typescript-plugin",
-      },
-    },
-    -- init_options = {
-    --   plugins = {
-    --     "@vue/typescript-plugin",
-    --   },
-    -- },
-    filetypes = {
-      "javascript",
-      "typescript",
-      "javascriptreact",
-      "typescriptreact",
-      "vue",
-    },
-  },
   volar = {},
   rust_analyzer = {
     on_attach = function(_, bufnr)
@@ -227,6 +207,23 @@ if not configs["nil"] then
     },
   }
 end
+
+require("typescript-tools").setup({
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+  },
+
+  settings = {
+    tsserver_plugins = {
+      "@vue/typescript-plugin",
+    },
+  },
+  capabilities = capabilities,
+})
 
 for key, setup in pairs(servers) do
   local custom_attach = setup.on_attach

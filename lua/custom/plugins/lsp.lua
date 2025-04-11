@@ -7,6 +7,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "Equilibris/nx.nvim",
+    "pmizio/typescript-tools.nvim",
   },
   config = function()
     require("custom.lsp")
