@@ -2,6 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "nvim-telescope/telescope.nvim",
+    "pmizio/typescript-tools.nvim",
     "folke/neoconf.nvim",
   },
   config = function()
