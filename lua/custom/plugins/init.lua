@@ -1,7 +1,4 @@
 return {
-  { "folke/neoconf.nvim", config = true },
-  "tpope/vim-surround",
-  { "NMAC427/guess-indent.nvim", enabled = false, config = true },
   { "folke/todo-comments.nvim", config = true },
   { "RaafatTurki/hex.nvim", config = true },
   {
@@ -35,27 +32,6 @@ return {
     end,
   },
   {
-    "siawkz/nvim-cheatsh",
-    enabled = false,
-    dependecies = {
-      "nvim-telescope/telescope.nvim",
-      "ibhagwan/fzf-lua",
-    },
-    config = function()
-      require("nvim-cheatsh").setup({
-        cheatsh_url = "https://cht.sh/",
-        position = "top",
-        height = 30,
-      })
-      vim.keymap.set(
-        "n",
-        "<leader>to",
-        "<cmd>CheatList<CR>",
-        { desc = "List availiable cheat sheets" }
-      )
-    end,
-  },
-  {
     "airblade/vim-rooter",
     config = function()
       vim.g.rooter_patterns = {
@@ -76,5 +52,36 @@ return {
     end,
   },
   "sitiom/nvim-numbertoggle",
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {
+      exclude = {
+        filetypes = { "dashboard" },
+      },
+    },
+  },
   { "yorickpeterse/nvim-pqf", config = true },
+  { "MagicDuck/grug-far.nvim", config = true },
+  {
+    "LunarVim/bigfile.nvim",
+    config = function()
+      require("bigfile").setup({
+        filesize = 100,
+        pattern = { "*" },
+        features = {
+          "indent_blankline",
+          "illuminate",
+          "lsp",
+          "treesitter",
+          "syntax",
+          "matchparen",
+          "vimopts",
+          "filetype",
+        },
+      })
+    end,
+  },
 }

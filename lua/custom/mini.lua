@@ -1,11 +1,12 @@
-require("mini.comment").setup()
-require("mini.move").setup({
-  options = {
-    reindent_linewise = true,
-  },
-})
+require("mini.comment").setup({})
+require("mini.move").setup({})
+require("mini.align").setup({})
+require("mini.ai").setup({})
+require("mini.surround").setup({})
+require("mini.pairs").setup({})
+
 local bufremove = require("mini.bufremove")
-bufremove.setup({ silent = true })
+bufremove.setup({ set_vim_settings = true, silent = true })
 
 vim.keymap.set(
   "n",

@@ -127,6 +127,7 @@ local servers = {
   },
   astro = {},
   clangd = {
+    -- root_dir = lsp.util.root_pattern("build.zig"),
     cmd = (function()
       local cmd = { "clangd" }
       local isystem = os.getenv("CC")
@@ -186,9 +187,6 @@ local servers = {
   html = {},
   emmet_ls = {},
 }
-
-require("nx").setup({})
-require("telescope").load_extension("nx")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)

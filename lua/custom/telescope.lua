@@ -28,7 +28,7 @@ local builtin = require("telescope.builtin")
 
 -- stylua: ignore start
 
--- Regulat keymaps
+-- Regular keymaps
 set("n", "<leader>tf", builtin.find_files, {desc = "Find files"})
 set("n", "<leader>ts", builtin.live_grep, {desc = "Search for a string within the current directory"})
 set("n", "<leader>tq", builtin.quickfix, {desc = "List quickfix items"})

@@ -20,22 +20,12 @@ require("statuscol").setup({
     {
       sign = {
         name = {
-          "Dap",
+          "DAP",
           "neotest",
         },
         maxwidth = 2,
         colwidth = 2,
         auto = true,
-      },
-    },
-    {
-      sign = {
-        namespace = { "gitsign" },
-        maxwidth = 1,
-        colwidth = 1,
-        auto = false,
-        fillchar = " ",
-        fillcharhl = "StatusColumnSeparator",
       },
     },
     {
