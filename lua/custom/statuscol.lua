@@ -25,7 +25,7 @@ require("statuscol").setup({
         },
         maxwidth = 2,
         colwidth = 2,
-        auto = true,
+        auto = false,
       },
     },
     {
