@@ -65,7 +65,6 @@ return {
     },
   },
   { "yorickpeterse/nvim-pqf", config = true },
-  { "MagicDuck/grug-far.nvim", config = true },
   {
     "LunarVim/bigfile.nvim",
     config = function()
