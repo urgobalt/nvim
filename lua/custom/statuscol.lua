@@ -1,21 +1,39 @@
 local builtin = require("statuscol.builtin")
-function hello(hello) end
+
+vim.diagnostic.config({
+  virtual_text = true,
+  underline = false,
+  severity_sort = true,
+  signs = {
+    active = true,
+    text = {
+      [vim.diagnostic.severity.INFO] = " ",
+      [vim.diagnostic.severity.HINT] = " ",
+      [vim.diagnostic.severity.WARN] = " ",
+      [vim.diagnostic.severity.ERROR] = " ",
+    },
+  },
+})
+
 require("statuscol").setup({
   relculright = true,
   setopt = true,
+  thousands = "_",
   segments = {
     {
+      text = { builtin.foldfunc },
+    },
+    {
+      text = { " ", "%s" },
       sign = {
-        namespace = {
-          "vim_lsp_references",
-          "vim_lsp_semantic_tokens",
-          "vim_lsp_inlayhint",
-        },
-        maxwidth = 3,
-        colwidth = 1,
+        namespace = { "diagnostic" },
+        fillcharhl = "SignColumn",
+        maxwidth = 2,
+        colwidth = 2,
         auto = false,
-        fillChar = "~",
+        foldclosed = true,
       },
+      hl = "SignColumn",
     },
     {
       sign = {
@@ -25,11 +43,11 @@ require("statuscol").setup({
         },
         maxwidth = 2,
         colwidth = 2,
-        auto = false,
+        auto = true,
       },
     },
     {
-      text = { "%C ", builtin.lnumfunc, " " },
+      text = { builtin.lnumfunc, " " },
     },
   },
   ft_ignore = {
@@ -44,4 +62,5 @@ require("statuscol").setup({
     "lazy",
     "toggleterm",
   },
+  bt_ignore = { "nofile" },
 })
