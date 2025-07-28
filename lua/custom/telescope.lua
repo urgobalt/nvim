@@ -50,4 +50,6 @@ set("n", "<leader>tp", function() telescope.extensions.repo.list({}) end, {desc=
 -- CmdLine
 -- set("n", ":", "<CMD>Telescope cmdline<CR>", {desc="CmdLine"})
 
+set("n", "<leader>tt", "<cmd>TodoTelescope<cr>", {desc = "Search through all project todos"})
+
 -- stylua: ignore end
