@@ -2,6 +2,8 @@ local formatter_bindings = {
   lua = { "stylua" },
   javascript = { "prettier", "prettierd" },
   typescript = { "prettier", "prettierd" },
+  css = { "prettier", "prettierd" },
+  heex = { "prettier", "prettierd" },
   go = { "gofmt" },
   nix = { "alejandra" },
 }

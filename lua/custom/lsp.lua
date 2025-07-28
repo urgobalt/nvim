@@ -171,21 +171,44 @@ local servers = {
     root_dir = lsp.util.root_pattern("wp-includes"),
   },
   taplo = {},
-  tailwindcss = {},
+  tailwindcss = {
+    settings = {
+      tailwindCSS = {
+        validate = true,
+        includeLanguages = { heex = "html" },
+      },
+    },
+  },
   zls = {},
   jsonls = {},
   gleam = {},
-  elixirls = {
-    cmd = { "elixir-ls" },
-  },
   -- ruff = {
   -- 	cmd = { "ruff", "--preview" },
   -- },
   -- pylyzer = {},
   -- jedi_language_server = {},
   pylsp = {},
-  html = {},
-  emmet_ls = {},
+  html = {
+    filetypes = { "html", "heex", "html-eex" },
+  },
+  emmet_ls = {
+    filetypes = {
+      "css",
+      "elixir",
+      "eruby",
+      "heex",
+      "html",
+      "javascript",
+      "javascriptreact",
+      "less",
+      "sass",
+      "scss",
+      "svelte",
+      "pug",
+      "typescriptreact",
+      "vue",
+    },
+  },
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
