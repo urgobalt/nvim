@@ -6,6 +6,7 @@ local formatter_bindings = {
   heex = { "prettier", "prettierd" },
   go = { "gofmt" },
   nix = { "alejandra" },
+  blade = { "blade-formatter" },
 }
 
 require("conform").setup({

@@ -144,6 +144,7 @@ local servers = {
   ["nil"] = {},
   ocamllsp = {},
   intelephense = {
+    filetypes = {"blade", "php"},
     settings = {
       -- stylua: ignore start
       stubs = {
