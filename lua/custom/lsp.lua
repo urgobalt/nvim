@@ -125,7 +125,13 @@ local servers = {
       },
     },
   },
-  astro = {},
+  astro = {
+    init_options = {
+      typescript = {
+        tsdk = "./node_modules/typescript/lib",
+      },
+    },
+  },
   clangd = {
     -- root_dir = lsp.util.root_pattern("build.zig"),
     cmd = (function()
@@ -144,7 +150,7 @@ local servers = {
   ["nil"] = {},
   ocamllsp = {},
   intelephense = {
-    filetypes = {"blade", "php"},
+    filetypes = { "blade", "php" },
     settings = {
       -- stylua: ignore start
       stubs = {
