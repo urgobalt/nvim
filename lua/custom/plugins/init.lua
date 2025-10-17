@@ -13,19 +13,6 @@ return {
     end,
   },
   {
-    "folke/trouble.nvim",
-    config = function()
-      require("trouble").setup({})
-
-      vim.keymap.set(
-        "n",
-        "<leader>o",
-        "<cmd>Trouble diagnostics toggle focus=false<CR>",
-        { desc = "Toggle trouble" }
-      )
-    end,
-  },
-  {
     "laytan/cloak.nvim",
     config = function()
       require("cloak").setup({})
@@ -55,7 +42,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    ---@module "ibl"
+    ---@module "indent_blankline"
     ---@type ibl.config
     opts = {
       exclude = {
