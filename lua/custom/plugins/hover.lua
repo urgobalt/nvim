@@ -1,38 +1,58 @@
 return {
-  "lewis6991/hover.nvim",
+  "patrickpichler/hovercraft.nvim",
+  dependencies = {
+    { "nvim-lua/plenary.nvim" },
+  },
   config = function()
-    require("hover").setup({
-      init = function()
-        -- Require providers
-        require("hover.providers.lsp")
-        require("hover.providers.gh")
-        -- require('hover.providers.gh_user')
-        -- require('hover.providers.jira')
-        -- require('hover.providers.dap')
-        -- require('hover.providers.man')
-        -- require('hover.providers.dictionary')
-      end,
-      preview_opts = {
-        border = "single",
+    require("hovercraft").setup({
+      providers = {
+        providers = {
+          {
+            "LSP",
+            require("hovercraft.provider.lsp.hover").new(),
+          },
+          {
+            "Man",
+            require("hovercraft.provider.man").new(),
+          },
+          {
+            "Dictionary",
+            require("hovercraft.provider.dictionary").new(),
+          },
+        },
       },
-      preview_window = true,
-      title = true,
+
+      window = {
+        border = "rounded",
+
+        -- enable this if you are a user of the MeanderingProgrammer/render-markdown.nvim plugin
+        -- render_markdown_compat_mode = true,
+      },
+      keys = {
+        {
+          "<TAB>",
+          function()
+            require("hovercraft").hover_next()
+          end,
+        },
+        {
+          "<S-TAB>",
+          function()
+            require("hovercraft").hover_next({ step = -1 })
+          end,
+        },
+      },
     })
 
     -- Setup keymaps
-    vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
-    vim.keymap.set(
-      "n",
-      "gK",
-      require("hover").hover_select,
-      { desc = "hover.nvim (select)" }
-    )
-        -- stylua: ignore start
-		-- Selections
-		---@diagnostic disable
-		vim.keymap.set("n", "<C-p>", function() require("hover").hover_switch("previous") end, { desc = "Next source" })
-		vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, { desc = "Next source" })
-    ---@diagnostic enable
-    -- stylua: ignore end
+    vim.keymap.set("n", "K", function()
+      local hovercraft = require("hovercraft")
+
+      if hovercraft.is_visible() then
+        hovercraft.enter_popup()
+      else
+        hovercraft.hover()
+      end
+    end, { desc = "Hover" })
   end,
 }
