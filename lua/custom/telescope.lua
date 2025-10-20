@@ -23,6 +23,7 @@ telescope.setup({
 
 telescope.load_extension("repo")
 telescope.load_extension("fzy_native")
+telescope.load_extension("conflicts")
 
 local builtin = require("telescope.builtin")
 
@@ -41,8 +42,8 @@ set("n", "<leader>:", builtin.commands, {desc = "List commands and runs them on 
 set("n", "<leader>?", builtin.keymaps, {desc = "List keymaps"})
 set("n", "<leader>th", builtin.help_tags, {desc = "List help tags"})
 
--- Configuration
-set("n", "<leader>tc", function() builtin.find_files({cwd="/etc/nixos"}) end, {desc = "Open file in configuration"})
+-- Conflicts
+set("n", "<leader>tc", "<cmd>Telescope conflicts<cr>", {desc = "List conflicts in the repo"})
 
 -- Repo
 set("n", "<leader>tp", function() telescope.extensions.repo.list({}) end, {desc="Open file in project"})
