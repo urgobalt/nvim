@@ -1,12 +1,11 @@
 return {
   "chrisgrieser/nvim-rip-substitute",
-  cmd = "RipSubstitute",
   config = function()
     require("rip-substitute").setup()
     vim.keymap.set(
       "n",
       "<leader>r",
-      "RipSubstitute",
+      "<cmd>RipSubstitute<cr>",
       { desc = "Rip substitue" }
     )
   end,
