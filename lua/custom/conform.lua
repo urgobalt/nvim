@@ -7,6 +7,8 @@ local formatter_bindings = {
   go = { "gofmt" },
   nix = { "alejandra" },
   blade = { "blade-formatter" },
+  fasm = { "asmfmt" },
+  asm = { "asmfmt" },
 }
 
 require("conform").setup({
