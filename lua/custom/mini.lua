@@ -1,8 +1,6 @@
 require("mini.comment").setup({})
 require("mini.move").setup({})
 require("mini.align").setup({})
--- require("mini.surround").setup({})
-require("mini.pairs").setup({})
 local ai = require("mini.ai")
 local treesitter = ai.gen_spec.treesitter
 ai.setup({
