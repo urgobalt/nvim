@@ -29,8 +29,8 @@ oil.setup({
   -- Set to false to disable all of the above keymaps
   use_default_keymaps = false,
   columns = {
+    "permissions",
     "icon",
-    -- "permissions",
     -- "size",
     -- "mtime",
   },
@@ -49,7 +49,7 @@ oil.setup({
     autosave_changes = true,
   },
   contraint_cursor = "editable",
-  expreimental_watch_for_changes = true,
+  experimental_watch_for_changes = true,
   view_options = {
     show_hidden = true,
     is_always_hidden = function(name, _)

@@ -79,10 +79,10 @@ return {
       require("smart-splits").setup({})
 
       -- resizing splits
-      vim.keymap.set("n", "<A-h>", splits.resize_left)
-      vim.keymap.set("n", "<A-j>", splits.resize_down)
-      vim.keymap.set("n", "<A-k>", splits.resize_up)
-      vim.keymap.set("n", "<A-l>", splits.resize_right)
+      vim.keymap.set("n", "<A-C-h>", splits.resize_left)
+      vim.keymap.set("n", "<A-C-j>", splits.resize_down)
+      vim.keymap.set("n", "<A-C-k>", splits.resize_up)
+      vim.keymap.set("n", "<A-C-l>", splits.resize_right)
 
       -- moving between splits
       vim.keymap.set("n", "<C-h>", splits.move_cursor_left)

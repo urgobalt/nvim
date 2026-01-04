@@ -7,15 +7,11 @@ return {
         options = {},
       },
     })
-    vim.keymap.set("n", "<leader>ss", ":Namu symbols<cr>", {
+    vim.keymap.set("n", "gs", ":Namu symbols<cr>", {
       desc = "Jump to LSP symbol",
       silent = true,
     })
     vim.keymap.set("n", "<leader>sw", ":Namu workspace<cr>", {
-      desc = "LSP Symbols - Workspace",
-      silent = true,
-    })
-    vim.keymap.set("n", "<leader>so", ":Namu diagnostics workspace<cr>", {
       desc = "LSP Symbols - Workspace",
       silent = true,
     })

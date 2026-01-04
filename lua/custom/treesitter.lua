@@ -1,5 +1,33 @@
 require("nvim-treesitter.install").prefer_git = true
-require("nvim-treesitter.configs").setup({
+
+vim.filetype.add({ extension = { um = "umka" } })
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TSUpdate",
+  callback = function()
+    local parsers = require("nvim-treesitter.parsers")
+    parsers.umka = {
+      install_info = {
+        revision = "master",
+        url = "https://github.com/urgobalt/tree-sitter-umka",
+        files = { "src/parser.c" },
+      },
+      tier = 2,
+    }
+
+    parsers.just = {
+      install_info = {
+        revision = "main",
+        url = "https://github.com/IndianBoy42/tree-sitter-just",
+        files = { "src/parser.c", "src/scanner.c" },
+        branch = "main",
+      },
+      tier = 2,
+    }
+  end,
+})
+
+require("nvim-treesitter").setup({
   sync_install = false,
   ensure_installed = {
     "lua",
@@ -29,3 +57,4 @@ require("nvim-treesitter.configs").setup({
   modules = {},
   ignore_install = {},
 })
+

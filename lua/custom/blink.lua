@@ -21,13 +21,11 @@ require("blink.cmp").setup({
   },
 
   sources = {
-    default = function()
-      if vim.bo.filetype == "sql" then
-        return { "dadbod", "buffer" }
-      end
-
-      return { "lazydev", "lsp", "path", "snippets", "buffer" }
-    end,
+    default = { "lsp", "path", "snippets", "buffer" },
+    per_filetype = {
+      sql = { "dadbod", "buffer" },
+      lua = { inherit_defaults = true, "lazydev" },
+    },
     providers = {
       dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
       lazydev = {

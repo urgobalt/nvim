@@ -69,6 +69,7 @@ local on_attach = function(on_attach)
       buffer = bufnr,
       desc = "Workspace Symbols",
     })
+    vim.keymap.set("n", "ge", telescope.diagnostics)
 
     if on_attach ~= nil then
       on_attach(client, bufnr)
