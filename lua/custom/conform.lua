@@ -1,21 +1,21 @@
 local formatter_bindings = {
-  lua = { "stylua" },
+  lua        = { "stylua" },
   javascript = { "prettier", "prettierd" },
   typescript = { "prettier", "prettierd" },
-  css = { "prettier", "prettierd" },
-  heex = { "prettier", "prettierd" },
-  go = { "gofmt" },
-  nix = { "alejandra" },
-  blade = { "blade-formatter" },
-  fasm = { "asmfmt" },
-  asm = { "asmfmt" },
+  css        = { "prettier", "prettierd" },
+  heex       = { "prettier", "prettierd" },
+  go         = { "gofmt" },
+  nix        = { "alejandra" },
+  blade      = { "blade-formatter" },
+  fasm       = { "asmfmt" },
+  asm        = { "asmfmt" },
 }
 
 require("conform").setup({
   formatters_by_ft = formatter_bindings,
 })
 
-vim.keymap.set("n", "<leader>f", function()
+vim.keymap.set({ "n", "v", "x" }, "<leader>f", function()
   require("conform").format({
     lsp_fallback = true,
   })

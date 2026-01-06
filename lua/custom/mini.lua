@@ -1,6 +1,6 @@
 require("mini.comment").setup({})
 require("mini.move").setup({})
-require("mini.align").setup({})
+-- require("mini.align").setup({})
 local ai = require("mini.ai")
 local treesitter = ai.gen_spec.treesitter
 ai.setup({
@@ -8,7 +8,8 @@ ai.setup({
   n_lines = 500,
   custom_textobjects = {
     f = treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
-    c = treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+    o = treesitter({ a = "@class.outer",    i = "@class.inner" },    {}),
+    c = ai.gen_spec.function_call()
   },
 })
 

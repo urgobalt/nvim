@@ -21,7 +21,7 @@ require("blink.cmp").setup({
   },
 
   sources = {
-    default = { "lsp", "path", "snippets", "buffer" },
+    default = { "lsp", "path", "snippets", "buffer", "ripgrep" },
     per_filetype = {
       sql = { "dadbod", "buffer" },
       lua = { inherit_defaults = true, "lazydev" },
@@ -32,6 +32,14 @@ require("blink.cmp").setup({
         name = "LazyDev",
         module = "lazydev.integrations.blink",
         score_offset = 100,
+      },
+      ripgrep = {
+        module = "blink-ripgrep",
+        name = "Ripgrep",
+        -- see the full configuration below for all available options
+        ---@module "blink-ripgrep"
+        ---@type blink-ripgrep.Options
+        opts = {},
       },
     },
   },

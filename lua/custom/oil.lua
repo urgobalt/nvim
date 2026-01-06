@@ -2,28 +2,28 @@ local oil = require("oil")
 oil.setup({
   default_file_explorer = true,
   keymaps = {
-    ["g?"] = "actions.show_help",
-    ["<CR>"] = "actions.select",
-    ["<C-s>"] = {
-      "actions.select",
-      opts = { vertical = true },
-      desc = "Open the entry in a vertical split",
-    },
-    -- ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+    ["g?"]    = "actions.show_help",
+    ["<CR>"]  = "actions.select",
     ["<C-p>"] = "actions.preview",
     ["<C-c>"] = "actions.close",
-    -- ["<C-l>"] = "actions.refresh",
-    ["-"] = "actions.parent",
-    ["_"] = "actions.open_cwd",
-    ["`"] = "actions.cd",
-    ["~"] = {
-      "actions.cd",
-      opts = { scope = "tab" },
-      desc = ":tcd to the current oil directory",
+    ["-"]     = "actions.parent",
+    ["_"]     = "actions.open_cwd",
+    ["`"]     = "actions.cd",
+    ["gs"]    = "actions.change_sort",
+    ["gx"]    = "actions.open_external",
+    ["g."]    = "actions.toggle_hidden",
+    ["<C-s>"] = {
+      "actions.select",
+      opts    = { vertical = true },
+      desc    = "Open the entry in a vertical split",
     },
-    ["gs"] = "actions.change_sort",
-    ["gx"] = "actions.open_external",
-    ["g."] = "actions.toggle_hidden",
+    ["~"]     = {
+      "actions.cd",
+      opts    = { scope = "tab" },
+      desc    = ":tcd to the current oil directory",
+    },
+    -- ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+    -- ["<C-l>"] = "actions.refresh",
     -- ["g\\"] = "actions.toggle_trash",
   },
   -- Set to false to disable all of the above keymaps
@@ -31,7 +31,7 @@ oil.setup({
   columns = {
     "permissions",
     "icon",
-    -- "size",
+    "size",
     -- "mtime",
   },
   buf_options = {

@@ -10,6 +10,10 @@ return {
     "tpope/vim-dadbod",
     "kristijanhusak/vim-dadbod-completion",
     "kristijanhusak/vim-dadbod-ui",
+    {
+      "mikavilpas/blink-ripgrep.nvim",
+      version = "*", -- use the latest stable version
+    },
   },
 
   version = "*",

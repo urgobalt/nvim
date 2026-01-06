@@ -85,11 +85,24 @@ return {
       vim.keymap.set("n", "<A-C-l>", splits.resize_right)
 
       -- moving between splits
-      vim.keymap.set("n", "<C-h>", splits.move_cursor_left)
-      vim.keymap.set("n", "<C-j>", splits.move_cursor_down)
-      vim.keymap.set("n", "<C-k>", splits.move_cursor_up)
-      vim.keymap.set("n", "<C-l>", splits.move_cursor_right)
+      vim.keymap.set("n", "<C-h>",  splits.move_cursor_left)
+      vim.keymap.set("n", "<C-j>",  splits.move_cursor_down)
+      vim.keymap.set("n", "<C-k>",  splits.move_cursor_up)
+      vim.keymap.set("n", "<C-l>",  splits.move_cursor_right)
       vim.keymap.set("n", "<C-\\>", splits.move_cursor_previous)
+    end,
+  },
+  {
+    "Vonr/align.nvim",
+    branch = "v2",
+    lazy = true,
+    init = function()
+      -- Create your mappings here
+      vim.keymap.set("x", "gaw", function()
+        require("align").align_to_string({
+          regex = true,
+        })
+      end, { desc = "Align to string/regex" })
     end,
   },
 }

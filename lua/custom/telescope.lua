@@ -30,17 +30,17 @@ local builtin = require("telescope.builtin")
 -- stylua: ignore start
 
 -- Regular keymaps
-set("n", "<leader>tf", builtin.find_files, {desc = "Find files"})
-set("n", "<leader>ts", builtin.live_grep, {desc = "Search for a string within the current directory"})
-set("n", "<leader>tq", builtin.quickfix, {desc = "List quickfix items"})
+set("n", "<leader>tf", builtin.find_files,    {desc = "Find files"})
+set("n", "<leader>ts", builtin.live_grep,     {desc = "Search for a string within the current directory"})
+set("n", "<leader>tq", builtin.quickfix,      {desc = "List quickfix items"})
 set("n", "<leader>tw", builtin.spell_suggest, {desc = "Spell suggestions for current word"})
-set("n", "<leader>tr", builtin.resume, {desc = "Reopen the previous window with the same selections and items"})
-set("n", "<leader>tb", builtin.buffers, {desc = "List buffers"})
+set("n", "<leader>tr", builtin.resume,        {desc = "Reopen the previous window with the same selections and items"})
+set("n", "<leader>tb", builtin.buffers,       {desc = "List buffers"})
 
 -- Help menus
-set("n", "<leader>:", builtin.commands, {desc = "List commands and runs them on <CR>"})
-set("n", "<leader>?", builtin.keymaps, {desc = "List keymaps"})
-set("n", "<leader>th", builtin.help_tags, {desc = "List help tags"})
+set("n", "<leader>:",  builtin.commands,      {desc = "List commands and runs them on <CR>"})
+set("n", "<leader>?",  builtin.keymaps,       {desc = "List keymaps"})
+set("n", "<leader>th", builtin.help_tags,     {desc = "List help tags"})
 
 -- Conflicts
 set("n", "<leader>tc", "<cmd>Telescope conflicts<cr>", {desc = "List conflicts in the repo"})

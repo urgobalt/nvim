@@ -13,7 +13,10 @@
     in {
       devShells.default = with pkgs;
         mkShell {
-          packages = with pkgs; [${cursor}];
+          packages = [
+            just
+            ${cursor}
+          ];
           shellHook = ''
           '';
         };
