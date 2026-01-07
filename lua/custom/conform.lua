@@ -9,6 +9,7 @@ local formatter_bindings = {
   blade      = { "blade-formatter" },
   fasm       = { "asmfmt" },
   asm        = { "asmfmt" },
+  ocaml      = { "ocp-indent" }
 }
 
 require("conform").setup({

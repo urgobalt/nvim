@@ -1,7 +1,5 @@
 require("nvim-treesitter.install").prefer_git = true
 
-vim.filetype.add({ extension = { um = "umka" } })
-
 vim.api.nvim_create_autocmd("User", {
   pattern = "TSUpdate",
   callback = function()

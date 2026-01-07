@@ -1,7 +1,7 @@
 local telescope = require("telescope")
 telescope.setup({
   defaults = {
-    initial_mode = "normal",
+    initial_mode = "insert",
   },
   extensions = {
     repo = {
@@ -33,8 +33,8 @@ vim.keymap.set("n", "<leader>tq", builtin.quickfix,      {desc = "List quickfix 
 vim.keymap.set("n", "<leader>tw", builtin.spell_suggest, {desc = "Spell suggestions for current word"})
 vim.keymap.set("n", "<leader>tr", builtin.resume,        {desc = "Reopen the previous window with the same selections and items"})
 vim.keymap.set("n", "<leader>tb", builtin.buffers,       {desc = "List buffers"})
-
-vim.keymap.set({ "n", "v" }, "<leader>ts", function()
+vim.keymap.set({ "n", "v" }, "<leader>ts", builtin.live_grep, {})
+vim.keymap.set({ "n", "v" }, "<leader>tS", function()
   local word
   if vim.fn.mode() == "v" then
     local saved_reg = vim.fn.getreg "v"
