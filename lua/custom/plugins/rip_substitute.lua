@@ -3,7 +3,7 @@ return {
   config = function()
     require("rip-substitute").setup()
     vim.keymap.set(
-      "n",
+      { "n", "x", "v" },
       "<leader>r",
       "<cmd>RipSubstitute<cr>",
       { desc = "Rip substitue" }
