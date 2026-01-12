@@ -11,6 +11,22 @@ set(
   { desc = "Close window without closing neovim" }
 )
 
+-- TODO: Search for the next symbol of the same name you are currently on, then
+-- go to it
+-- set("n", "<C-S-n>", function()
+--   local word = vim.fn.expand("<cword>")
+-- end)
+
+local function goto_ctag()
+  local ok, _ = pcall(vim.cmd.tag) -- try to jump to the tag
+  if not ok then
+    vim.notify("No C tag found under cursor", vim.log.levels.WARN)
+  end
+end
+
+-- register the mapping
+set("n", "gt", goto_ctag, { desc = "Go to C tag" })
+
 -- set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 -- set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 -- set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
