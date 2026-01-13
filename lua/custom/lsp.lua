@@ -148,7 +148,8 @@ local servers = {
   },
   gopls = {},
   -- htmx = {},
-  ["nil"] = {},
+  nixd = {},
+  -- nil_ls = {},
   ocamllsp = {},
   intelephense = {
     filetypes = { "blade", "php" },
@@ -222,21 +223,6 @@ local servers = {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
-
-local configs = require("lspconfig.configs")
-
--- Custom servers
-if not configs["nil"] then
-  configs["nil"] = {
-    default_config = {
-      cmd = { "nil" },
-      filetypes = { "nix" },
-      name = "nil",
-      root_dir = lsp.util.root_pattern("flake.nix", "configuration.nix"),
-      settings = {},
-    },
-  }
-end
 
 require("typescript-tools").setup({
   filetypes = {
