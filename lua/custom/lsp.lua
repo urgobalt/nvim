@@ -218,6 +218,7 @@ local servers = {
     },
   },
   julials = {},
+  hare_lsp = {},
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -233,6 +234,17 @@ if not configs["nil"] then
       filetypes = { "nix" },
       name = "nil",
       root_dir = lsp.util.root_pattern("flake.nix", "configuration.nix"),
+      settings = {},
+    },
+  }
+end
+
+if not configs["hare_lsp"] then
+  configs["hare_lsp"] = {
+    default_config = {
+      cmd = { "hare-lsp", "-S" },
+      filetypes = { "hare" },
+      root_dir = lsp.util.root_pattern(".git", ".jj"),
       settings = {},
     },
   }
