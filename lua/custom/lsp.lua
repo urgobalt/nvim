@@ -135,16 +135,16 @@ local servers = {
   },
   clangd = {
     -- root_dir = lsp.util.root_pattern("build.zig"),
-    cmd = (function()
-      local cmd = { "clangd" }
-      local isystem = os.getenv("CC")
-
-      if isystem ~= nil and isystem ~= "" then
-        cmd[#cmd + 1] = "--query-driver=" .. isystem
-      end
-
-      return cmd
-    end)(),
+    -- cmd = (function()
+    --   local cmd = { "clangd" }
+    --   local isystem = os.getenv("CC")
+    --
+    --   if isystem ~= nil and isystem ~= "" then
+    --     cmd[#cmd + 1] = "--query-driver=" .. isystem
+    --   end
+    --
+    --   return cmd
+    -- end)(),
   },
   gopls = {},
   -- htmx = {},

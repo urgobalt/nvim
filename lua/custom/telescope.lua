@@ -28,13 +28,13 @@ local builtin = require("telescope.builtin")
 -- stylua: ignore start
 
 -- Regular keymaps
-vim.keymap.set("n", "<leader>tf", builtin.find_files,    {desc = "Find files"})
-vim.keymap.set("n", "<leader>tq", builtin.quickfix,      {desc = "List quickfix items"})
-vim.keymap.set("n", "<leader>tw", builtin.spell_suggest, {desc = "Spell suggestions for current word"})
-vim.keymap.set("n", "<leader>tr", builtin.resume,        {desc = "Reopen the previous window with the same selections and items"})
-vim.keymap.set("n", "<leader>tb", builtin.buffers,       {desc = "List buffers"})
-
-vim.keymap.set({ "n", "v" }, "<leader>ts", function()
+vim.keymap.set("n", "<leader>tf", builtin.find_files,         {desc = "Find files"})
+vim.keymap.set("n", "<leader>tq", builtin.quickfix,           {desc = "List quickfix items"})
+vim.keymap.set("n", "<leader>tw", builtin.spell_suggest,      {desc = "Spell suggestions for current word"})
+vim.keymap.set("n", "<leader>tr", builtin.resume,             {desc = "Reopen the previous window with the same selections and items"})
+vim.keymap.set("n", "<leader>tb", builtin.buffers,            {desc = "List buffers"})
+vim.keymap.set({ "n", "v" }, "<leader>ts", builtin.live_grep, {desc = "Search from a string within the current directory"})
+vim.keymap.set({ "n", "v" }, "<leader>tS", function()
   local word
   if vim.fn.mode() == "v" then
     local saved_reg = vim.fn.getreg "v"
@@ -50,7 +50,7 @@ vim.keymap.set({ "n", "v" }, "<leader>ts", function()
       default_text = word,
       regex = true,
   })
-end,                                                     {desc = "Search for a string within the current directory"})
+end,                                                          {desc = "Search for a string within the current directory (default: cword)"})
 
 -- Help menus
 vim.keymap.set("n", "<leader>:",  builtin.commands,      {desc = "List commands and runs them on <CR>"})

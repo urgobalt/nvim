@@ -6,7 +6,7 @@ return {
     import = "huez-manager.import",
     config = function()
       require("huez").setup({
-        fallback = "neobones",
+        fallback = "evergarden",
         exclude = {
           "default",
           "minicyan",
@@ -35,10 +35,24 @@ return {
     end,
   },
   {
-    "zenbones-theme/zenbones.nvim",
-    dependencies = "rktjmp/lush.nvim",
+    "https://codeberg.org/evergarden/nvim",
     lazy = false,
     priority = 1000,
+    config = function()
+      require("evergarden").setup({
+        theme = {
+          variant = "winter",
+        },
+        editor = {
+          transparent_background = true,
+          override_terminal = true,
+        },
+      })
+    end,
+  },
+  {
+    "zenbones-theme/zenbones.nvim",
+    dependencies = "rktjmp/lush.nvim",
   },
   "rebelot/kanagawa.nvim",
   "vim-scripts/MountainDew.vim",
