@@ -28,14 +28,18 @@ require("blink.cmp").setup({
     },
     providers = {
       dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+      lsp = {
+        score_offset = 200,
+      },
       lazydev = {
         name = "LazyDev",
         module = "lazydev.integrations.blink",
-        score_offset = 100,
+        score_offset = 10,
       },
       ripgrep = {
         module = "blink-ripgrep",
         name = "Ripgrep",
+        score_offset = 100,
         -- see the full configuration below for all available options
         ---@module "blink-ripgrep"
         ---@type blink-ripgrep.Options

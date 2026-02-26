@@ -2,6 +2,10 @@ local opt = vim.opt
 local wo  = vim.wo
 local g   = vim.g
 
+-- Disable legacy syntax highlighting completely
+vim.cmd("syntax off")
+g.syntax_on = false
+
 -- Remove trailing LF characters
 g.noendofline = "binary"
 
