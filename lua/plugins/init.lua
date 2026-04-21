@@ -112,4 +112,8 @@ return {
       end, { desc = "Align to string/regex" })
     end,
   },
+  {
+    "rhysd/conflict-marker.vim",
+    lazy = false,
+  }
 }

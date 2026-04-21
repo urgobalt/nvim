@@ -46,6 +46,9 @@ return {
         editor = {
           transparent_background = true,
           override_terminal = true,
+          cursor = {
+            color = "green",
+          },
         },
       })
     end,
