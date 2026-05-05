@@ -1,3 +1,5 @@
+load_start_time = os.clock()
+
 -- Dependencies
 vim.pack.add({
   -- General Graphical Dependency
@@ -73,9 +75,6 @@ require("config/navigation")
 -- Convenience
 require("config/todo")
 
--- Dashboard
-require("config/dashboard")
-
 -- OPTIONS
 
 -- Colorscheme
@@ -136,3 +135,8 @@ require('config-local').setup {
       silent = false,             -- Disable plugin messages (Config loaded/denied)
       lookup_parents = false,     -- Lookup config files in parent directories
     }
+
+startup_time = os.clock() - load_start_time
+
+-- Dashboard
+require("config/dashboard")
