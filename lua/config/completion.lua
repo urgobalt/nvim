@@ -1,23 +1,54 @@
+local custom_keymaps = {
+  ["<C-y>"] = { "select_and_accept" },
+  ["<C-e>"] = { "cancel" },
+  ["<C-n>"] = { "select_next" },
+  ["<C-p>"] = { "select_prev" },
+}
+
 require('blink.cmp').setup({
-  keymap = { preset = 'default' },
+  keymap = custom_keymaps,
   appearance = {
     use_nvim_cmp_as_default = true,
     nerd_font_variant = 'mono'
   },
   sources = {
-    default = { 'lsp', 'ripgrep', 'path', 'cmdline', 'buffer', 'lazydev' },
+    default = { 'lsp', 'ripgrep', 'path', 'cmdline', 'buffer' },
     providers = {
       ripgrep = {
         name = 'Ripgrep',
         module = 'blink-ripgrep',
         score_offset = -10,
       },
-      lazydev = {
-        name = "LazyDev",
-        module = "lazydev.integrations.blink",
-        -- make lazydev completions top priority (see `:h blink.cmp`)
-        score_offset = 100,
+    },
+  },
+  completion = {
+    keyword = { range = "prefix" },
+    menu = { auto_show = true },
+    documentation = { auto_show = true, auto_show_delay_ms = 1000 },
+    ghost_text = { enabled = false },
+
+    accept = {
+      create_undo_point = true,
+      auto_brackets = {
+        enabled = true,
+        default_brackets = { "(", ")" },
+        override_brackets_for_filetypes = {},
+        kind_resolution = {
+          enabled = true,
+          blocked_filetypes = { "typescriptreact", "javascriptreact", "vue" },
+        },
+        semantic_token_resolution = {
+          enabled = true,
+          blocked_filetypes = {},
+          timeout_ms = 200,
+        },
       },
     },
+  },
+  cmdline = {
+    completion = {
+      menu = { auto_show = true },
+    },
+    keymap = custom_keymaps,
   },
 })
