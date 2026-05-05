@@ -28,6 +28,10 @@ vim.pack.add({
   { src = "https://github.com/kylechui/nvim-surround" },
   { src = "https://github.com/ankushbhagats/match.nvim" },
 
+  -- Meta development
+  { src = "https://github.com/folke/todo-comments.nvim" },
+  { src = "https://github.com/spacedentist/resolve.nvim" },
+
   -- Completion
   { src = "https://github.com/Saghen/blink.cmp", version = "v1" },
   { src = "https://github.com/mikavilpas/blink-ripgrep.nvim" },
@@ -43,7 +47,6 @@ vim.pack.add({
   -- Convenience Plugins
   { src = "https://github.com/yutkat/confirm-quit.nvim" },
   { src = "https://github.com/pogyomo/winresize.nvim" },
-  { src = "https://github.com/folke/todo-comments.nvim" },
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
   { src = "https://github.com/nvimdev/dashboard-nvim" },
 
@@ -65,6 +68,10 @@ require("config/mini")
 require("config/surround")
 require("config/match")
 
+-- Meta development
+require("config/todo")
+require("config/resolve")
+
 -- Completion
 require("config/completion")
 
@@ -73,9 +80,6 @@ require("config/file-explorer")
 
 -- Navigation
 require("config/navigation")
-
--- Convenience
-require("config/todo")
 
 -- OPTIONS
 
