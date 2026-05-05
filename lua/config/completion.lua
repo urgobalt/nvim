@@ -5,12 +5,18 @@ require('blink.cmp').setup({
     nerd_font_variant = 'mono'
   },
   sources = {
-    default = { 'lsp', 'ripgrep', 'path', 'cmdline', 'buffer' },
+    default = { 'lsp', 'ripgrep', 'path', 'cmdline', 'buffer', 'lazydev' },
     providers = {
       ripgrep = {
         name = 'Ripgrep',
         module = 'blink-ripgrep',
         score_offset = -10,
+      },
+      lazydev = {
+        name = "LazyDev",
+        module = "lazydev.integrations.blink",
+        -- make lazydev completions top priority (see `:h blink.cmp`)
+        score_offset = 100,
       },
     },
   },

@@ -10,6 +10,7 @@ telescope.setup({
   }
 })
 
+vim.keymap.set('n', '<leader>tr', builtin.resume,                        { desc = 'Resume the last picker' })
 vim.keymap.set('n', '<leader>tf', builtin.find_files,                    { desc = 'Find files' })
 vim.keymap.set('n', '<leader>tw', builtin.lsp_dynamic_workspace_symbols, { desc = 'Search symbols' })
 vim.keymap.set('n', '<leader>tb', builtin.buffers,                       { desc = 'Find buffers' })

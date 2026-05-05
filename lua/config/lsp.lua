@@ -1,27 +1,29 @@
 local servers = {
   -- For configuration files
   lua_ls = {
-    Lua = {
-        runtime = {
-          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-          version = "LuaJIT",
-          path = vim.split(package.path, ";"),
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim", "require" },
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files and plugins
-          library = { vim.env.VIMRUNTIME },
-          checkThirdParty = false,
-        },
-        telemetry = {
-          enable = false,
-        },
-    },
+    settings = {
+      Lua = {
+          runtime = {
+            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+            version = "LuaJIT",
+            path = vim.split(package.path, ";"),
+          },
+          diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = { "vim", "require" },
+          },
+          workspace = {
+            -- Make the server aware of Neovim runtime files and plugins
+            library = { vim.env.VIMRUNTIME },
+            checkThirdParty = false,
+          },
+          telemetry = {
+            enable = false,
+          },
+      },
+    }
   },
-  nixd          = {},
+  ["nil"]       = {},
   -- Web development
   html          = {},
   cssls         = {},
@@ -34,8 +36,14 @@ local servers = {
   zls           = {},
 }
 
-local on_attach = function(on_attach)
-  return function(client, bufnr)
+-- Apply the configuration to the defined servers
+for lsp, configuration in pairs(servers) do
+  vim.lsp.enable(lsp)
+  vim.lsp.config(lsp, configuration)
+end
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
     local telescope = require("telescope.builtin")
 
     -- LSP Actions
@@ -43,30 +51,30 @@ local on_attach = function(on_attach)
       "n",
       "<leader>lr",
       vim.lsp.buf.rename,
-      { buffer = bufnr, desc = "Lsp [R]ename Symbol" }
+      { buffer = ev.buf, desc = "Lsp [R]ename Symbol" }
     )
     vim.keymap.set(
       "n",
       "<leader>la",
       vim.lsp.buf.code_action,
-      { buffer = bufnr, desc = "Lsp Code [A]ction" }
+      { buffer = ev.buf, desc = "Lsp Code [A]ction" }
     )
     vim.keymap.set("n", "<leader>lq", function()
       vim.lsp.buf.code_action({
         context = { only = { "quickfix" } },
         apply = true,
       })
-    end, { buffer = bufnr, desc = "LSP Code [Q]uickfix" })
+    end, { buffer = ev.buf, desc = "LSP Code [Q]uickfix" })
     vim.keymap.set("n", "<leader>lI", function()
       vim.lsp.buf.code_action({ context = { only = { "refactor.inline" } } })
-    end, { buffer = bufnr, desc = "LSP [I]nline Code Action" })
+    end, { buffer = ev.buf, desc = "LSP [I]nline Code Action" })
 
     -- Help
     vim.keymap.set(
       "n",
       "<leader>lh",
       vim.lsp.buf.signature_help,
-      { buffer = bufnr, desc = "Signature [H]elp" }
+      { buffer = ev.buf, desc = "Signature [H]elp" }
     )
 
     -- LSP Symbol Resolution
@@ -74,49 +82,36 @@ local on_attach = function(on_attach)
       "n",
       "gd",
       telescope.lsp_definitions,
-      { buffer = bufnr, desc = "Goto Definition" }
+      { buffer = ev.buf, desc = "Goto Definition" }
     )
     vim.keymap.set(
       "n",
       "gr",
       telescope.lsp_references,
-      { buffer = bufnr, desc = "Goto References" }
+      { buffer = ev.buf, desc = "Goto References" }
     )
     vim.keymap.set(
       "n",
       "gI",
       telescope.lsp_implementations,
-      { buffer = bufnr, desc = "Goto Implementation" }
+      { buffer = ev.buf, desc = "Goto Implementation" }
     )
     vim.keymap.set(
       "n",
       "<leader>lD",
       telescope.lsp_type_definitions,
-      { buffer = bufnr, desc = "LSP Type [D]efinition" }
+      { buffer = ev.buf, desc = "LSP Type [D]efinition" }
     )
     vim.keymap.set(
       "n",
       "<leader>ls",
       telescope.lsp_document_symbols,
-      { buffer = bufnr, desc = "Document Symbols" }
+      { buffer = ev.buf, desc = "Document Symbols" }
     )
     vim.keymap.set("n", "<leader>lS", telescope.lsp_workspace_symbols, {
-      buffer = bufnr,
+      buffer = ev.buf,
       desc = "Workspace Symbols",
     })
     vim.keymap.set("n", "ge", telescope.diagnostics)
-
-    if on_attach ~= nil then
-      on_attach(client, bufnr)
-    end
   end
-end
-
--- Apply the configuration to the defined servers
-for lsp, settings in pairs(servers) do
-  vim.lsp.enable(lsp)
-  vim.lsp.config(lsp, {
-    on_attach = on_attach,
-    settings = settings,
-  })
-end
+})

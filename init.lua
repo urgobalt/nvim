@@ -4,6 +4,8 @@ vim.pack.add({
   { src = "https://github.com/nvim-lua/plenary.nvim" },
   -- For Colorscheme
   { src = "https://github.com/rktjmp/lush.nvim" },
+  -- For Dashboard
+  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
 })
 
 -- Plugins
@@ -14,9 +16,14 @@ vim.pack.add({
 
   -- Development Environment
   { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/klen/nvim-config-local" },
+  { src = "https://github.com/luukvbaal/statuscol.nvim" },
+  { src = "https://github.com/sitiom/nvim-numbertoggle" },
+
+  -- Editing Enhancement
   { src = "https://github.com/nvim-mini/mini.nvim" },
   { src = "https://github.com/windwp/nvim-autopairs" },
-  { src = "https://github.com/luukvbaal/statuscol.nvim" },
+  { src = "https://github.com/kylechui/nvim-surround" },
 
   -- Completion
   { src = "https://github.com/Saghen/blink.cmp", version = "v1" },
@@ -24,6 +31,7 @@ vim.pack.add({
 
   -- File Explorer
   { src = "https://github.com/stevearc/oil.nvim" },
+  { src = "https://github.com/airblade/vim-rooter" },
 
   -- Navigation
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
@@ -33,6 +41,11 @@ vim.pack.add({
   { src = "https://github.com/yutkat/confirm-quit.nvim" },
   { src = "https://github.com/pogyomo/winresize.nvim" },
   { src = "https://github.com/folke/todo-comments.nvim" },
+  { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
+  { src = "https://github.com/nvimdev/dashboard-nvim" },
+
+  -- Optimization
+  { src = "https://github.com/LunarVim/bigfile.nvim" },
 })
 
 vim.g.mapleader = " "
@@ -40,10 +53,13 @@ vim.g.mapleader = " "
 -- Development Environment
 require("config/treesitter")
 require("config/lsp")
+require("config/signcolumn") -- statuscol
+
+-- Editing Enhancement
 require("config/autoclose")
 require("config/align")
 require("config/mini")
-require("config/signcolumn")
+require("config/surround")
 
 -- Completion
 require("config/completion")
@@ -56,6 +72,9 @@ require("config/navigation")
 
 -- Convenience
 require("config/todo")
+
+-- Dashboard
+require("config/dashboard")
 
 -- OPTIONS
 
@@ -73,6 +92,14 @@ require("transparent").setup({
     "TelescopePromptBorder",
     "FoldColumn",
   },
+})
+
+-- Indentation guides
+require('ibl').setup({
+  exclude = {
+    filetypes = { "dashboard" },
+  },
+  scope = { enabled = false },
 })
 
 -- Clipboard
@@ -100,3 +127,12 @@ vim.keymap.set("i", "<C-BS>", "<C-W>")
 vim.api.nvim_create_user_command("PackUpdate", function()
   vim.pack.update(nil, {force = true})
 end, {})
+
+require('config-local').setup {
+      config_files = { ".nvim.lua", ".nvimrc", ".exrc" },
+
+      autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
+      commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalDeny)
+      silent = false,             -- Disable plugin messages (Config loaded/denied)
+      lookup_parents = false,     -- Lookup config files in parent directories
+    }

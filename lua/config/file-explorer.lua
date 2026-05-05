@@ -61,12 +61,9 @@ require("oil").setup({
   keymaps = {
     ["g?"]        =  { "actions.show_help", mode = "n" },
     ["<CR>"]      =  "actions.select",
-    -- ["<C-s>"]  =  { "actions.select", opts = { vertical = true } },
-    -- ["<C-h>"]  =  { "actions.select", opts = { horizontal = true } },
-    -- ["<C-t>"]  =  { "actions.select", opts = { tab = true } },
     ["<C-p>"]     =  "actions.preview",
     ["<C-c>"]     =  { "actions.close", mode = "n" },
-    -- ["<C-l>"]     =  "actions.refresh",
+    ["<C-r>"]     =  "actions.refresh",
     ["-"]         =  { "actions.parent", mode = "n" },
     ["_"]         =  { "actions.open_cwd", mode = "n" },
     ["`"]         =  { "actions.cd", mode = "n" },
@@ -83,8 +80,9 @@ require("oil").setup({
       local m = name:match("^%.")
       return m ~= nil
     end,
-    is_always_hidden = function()
-      return false
+    is_always_hidden = function(name)
+      local m = name:match("^%.%.$")
+      return m ~= nil
     end,
     natural_order    = true,
     case_insensitive = false,
@@ -179,3 +177,19 @@ require("oil").setup({
     border = nil,
   },
 })
+
+vim.g.rooter_patterns = {
+  ".git",
+  ".jj",
+  "node_modules",
+  "package.json",
+  "cargo.toml",
+  "project.json",
+  ".direnv",
+  "dune-project",
+  "Dockerfile",
+  "docker-compose.yaml",
+  "docker-compose.yml",
+}
+
+vim.g.rooter_buftypes = { "", "acwrite" }
