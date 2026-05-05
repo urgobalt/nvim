@@ -130,13 +130,15 @@ vim.api.nvim_create_user_command("PackUpdate", function()
 end, {})
 
 require('config-local').setup {
-      config_files = { ".nvim.lua", ".nvimrc", ".exrc" },
+  config_files = { ".nvim.lua", ".nvimrc", ".exrc" },
 
-      autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
-      commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalDeny)
-      silent = false,             -- Disable plugin messages (Config loaded/denied)
-      lookup_parents = false,     -- Lookup config files in parent directories
-    }
+  autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
+  commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalDeny)
+  silent = false,             -- Disable plugin messages (Config loaded/denied)
+  lookup_parents = false,     -- Lookup config files in parent directories
+}
+
+require("autocmd")
 
 startup_time = os.clock() - load_start_time
 
