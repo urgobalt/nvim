@@ -26,6 +26,7 @@ vim.pack.add({
   { src = "https://github.com/nvim-mini/mini.nvim" },
   { src = "https://github.com/windwp/nvim-autopairs" },
   { src = "https://github.com/kylechui/nvim-surround" },
+  { src = "https://github.com/ankushbhagats/match.nvim" },
 
   -- Completion
   { src = "https://github.com/Saghen/blink.cmp", version = "v1" },
@@ -62,6 +63,7 @@ require("config/autoclose")
 require("config/align")
 require("config/mini")
 require("config/surround")
+require("config/match")
 
 -- Completion
 require("config/completion")

@@ -37,6 +37,10 @@
       "rev": "9c60ec2279d62487d942ce095e49006af28eed6e",
       "src": "https://github.com/rktjmp/lush.nvim"
     },
+    "match.nvim": {
+      "rev": "80ece2277f3aa74c42cbb05220353b7960e54e5a",
+      "src": "https://github.com/ankushbhagats/match.nvim"
+    },
     "mini.nvim": {
       "rev": "48555f1615f08c6318150aacb52bf7d61a5af798",
       "src": "https://github.com/nvim-mini/mini.nvim"
