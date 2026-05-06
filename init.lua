@@ -111,12 +111,6 @@ require('ibl').setup({
   scope = { enabled = false },
 })
 
--- Clipboard
-vim.o.clipboard = "unnamedplus"
-
--- Folding
-vim.o.foldenable = false
-
 -- Buffer/Windows actions
 vim.keymap.set("n", "<leader>w", "<CMD>w<CR>",                         { desc = "Write active buffer to file" })
 vim.keymap.set("n", "<leader>q", require("confirm-quit").confirm_quit, { desc = "Quit current window"         })
@@ -149,6 +143,7 @@ require('config-local').setup {
   lookup_parents = false,     -- Lookup config files in parent directories
 }
 
+require("options")
 require("autocmd")
 
 startup_time = os.clock() - load_start_time

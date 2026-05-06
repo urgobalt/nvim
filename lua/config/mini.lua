@@ -17,6 +17,3 @@ ai.setup({
 })
 
 require("mini.statusline").setup()
-
-vim.opt.showmode = false
-vim.opt.showcmd  = false
