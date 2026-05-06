@@ -23,7 +23,10 @@ local servers = {
       },
     }
   },
-  ["nil"]       = {},
+  ["nil"] = {
+    cmd       = { "nil" },
+    filetypes = { "nix" },
+  },
   -- Web development
   html          = {},
   cssls         = {},
