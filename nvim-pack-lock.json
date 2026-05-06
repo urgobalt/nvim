@@ -21,6 +21,10 @@
       "rev": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe",
       "src": "https://github.com/nvimdev/dashboard-nvim"
     },
+    "esqueleto.nvim": {
+      "rev": "d495d8aecf6d8cc87b8f9b82276cd88393ce014b",
+      "src": "https://github.com/cvigilv/esqueleto.nvim"
+    },
     "flash.nvim": {
       "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
       "src": "https://github.com/folke/flash.nvim"

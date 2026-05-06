@@ -32,6 +32,7 @@ vim.pack.add({
   -- Meta development
   { src = "https://github.com/folke/todo-comments.nvim" },
   { src = "https://github.com/spacedentist/resolve.nvim" },
+  { src = "https://github.com/cvigilv/esqueleto.nvim" },
 
   -- Completion
   { src = "https://github.com/Saghen/blink.cmp", version = "v1" },
@@ -73,6 +74,7 @@ require("config/rip")
 -- Meta development
 require("config/todo")
 require("config/resolve")
+require("config/template")
 
 -- Completion
 require("config/completion")
