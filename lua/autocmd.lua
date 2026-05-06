@@ -27,3 +27,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     pcall(vim.api.nvim_win_set_cursor, 0, last_pos)
   end
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup,
+  pattern = "*",
+  callback = function()
+    vim.opt_local.fo:remove("o")
+  end,
+})
