@@ -6,4 +6,4 @@ require("match").setup({
   border_hl = "Function",
 })
 
-vim.keymap.set("n", "/", "<CMD>Match<CR>", { desc = "Find and replace functionality" })
+vim.keymap.set("n", "<leader>/", "<CMD>Match<CR>", { desc = "Find and replace current buffer" })
