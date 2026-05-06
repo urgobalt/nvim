@@ -27,6 +27,7 @@ vim.pack.add({
   { src = "https://github.com/windwp/nvim-autopairs" },
   { src = "https://github.com/kylechui/nvim-surround" },
   { src = "https://github.com/ankushbhagats/match.nvim" },
+  { src = "https://github.com/chrisgrieser/nvim-rip-substitute" },
 
   -- Meta development
   { src = "https://github.com/folke/todo-comments.nvim" },
@@ -67,6 +68,7 @@ require("config/align")
 require("config/mini")
 require("config/surround")
 require("config/match")
+require("config/rip")
 
 -- Meta development
 require("config/todo")
@@ -109,6 +111,9 @@ require('ibl').setup({
 
 -- Clipboard
 vim.o.clipboard = "unnamedplus"
+
+-- Folding
+vim.o.foldenable = false
 
 -- Buffer/Windows actions
 vim.keymap.set("n", "<leader>w", "<CMD>w<CR>",                         { desc = "Write active buffer to file" })
