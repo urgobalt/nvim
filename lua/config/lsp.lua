@@ -37,6 +37,8 @@ local servers = {
   rust_analyzer = {},
   clangd        = {},
   zls           = {},
+  -- -- EXPERIMENTAL: Orgmode lsp integration
+  -- org           = {},
 }
 
 -- Apply the configuration to the defined servers

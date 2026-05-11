@@ -52,6 +52,9 @@ vim.pack.add({
   { src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
   { src = "https://github.com/nvimdev/dashboard-nvim" },
 
+  -- Note taking
+  { src = "https://github.com/nvim-orgmode/orgmode" },
+
   -- Optimization
   { src = "https://github.com/LunarVim/bigfile.nvim" },
 })
@@ -84,6 +87,9 @@ require("config/file-explorer")
 
 -- Navigation
 require("config/navigation")
+
+-- Orgmode
+require("config/orgmode")
 
 -- OPTIONS
 
