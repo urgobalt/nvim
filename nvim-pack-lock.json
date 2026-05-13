@@ -17,6 +17,10 @@
       "rev": "a1dbd9b553e8d6770cd6a879a3ee8ffad292c70c",
       "src": "https://github.com/yutkat/confirm-quit.nvim"
     },
+    "csvview.nvim": {
+      "rev": "5c22774c3ecc7f8883af5d143b366e45b1f0875d",
+      "src": "https://github.com/hat0uma/csvview.nvim"
+    },
     "dashboard-nvim": {
       "rev": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe",
       "src": "https://github.com/nvimdev/dashboard-nvim"

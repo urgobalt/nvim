@@ -35,6 +35,7 @@ vim.pack.add({
   { src = "https://github.com/spacedentist/resolve.nvim" },
   { src = "https://github.com/cvigilv/esqueleto.nvim" },
   { src = "https://github.com/RaafatTurki/hex.nvim" },
+  { src = "https://github.com/hat0uma/csvview.nvim" },
 
   -- Completion
   { src = "https://github.com/Saghen/blink.cmp", version = "v1" },
@@ -81,6 +82,7 @@ require("config/indentation")
 require("config/todo")
 require("config/resolve")
 require("config/template")
+require("config/csv")
 
 -- Completion
 require("config/completion")
