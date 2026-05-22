@@ -35,3 +35,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.fo:remove("o")
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = augroup,
+  desc = "Automatically format the indentation of the file",
+  command = ""
+})

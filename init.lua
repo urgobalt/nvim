@@ -28,6 +28,7 @@ vim.pack.add({
   { src = "https://github.com/kylechui/nvim-surround" },
   { src = "https://github.com/ankushbhagats/match.nvim" },
   { src = "https://github.com/chrisgrieser/nvim-rip-substitute" },
+  { src = "https://github.com/NMAC427/guess-indent.nvim" },
 
   -- Meta development
   { src = "https://github.com/folke/todo-comments.nvim" },
@@ -73,6 +74,7 @@ require("config/mini")
 require("config/surround")
 require("config/match")
 require("config/rip")
+require("config/indentation")
 
 -- Meta development
 require("config/todo")
