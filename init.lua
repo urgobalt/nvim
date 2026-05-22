@@ -34,6 +34,7 @@ vim.pack.add({
   { src = "https://github.com/folke/todo-comments.nvim" },
   { src = "https://github.com/spacedentist/resolve.nvim" },
   { src = "https://github.com/cvigilv/esqueleto.nvim" },
+  { src = "https://github.com/RaafatTurki/hex.nvim" },
 
   -- Completion
   { src = "https://github.com/Saghen/blink.cmp", version = "v1" },
@@ -153,6 +154,8 @@ require('config-local').setup {
 
 require("options")
 require("autocmd")
+
+require("hex").setup()
 
 startup_time = os.clock() - load_start_time
 
